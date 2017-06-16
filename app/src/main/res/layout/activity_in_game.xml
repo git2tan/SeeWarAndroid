@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.seawar.InGameActivity">
+
+    <AbsoluteLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteX="-32dp"
+        tools:layout_editor_absoluteY="-55dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="24dp"
+            android:layout_height="25dp"
+            android:layout_x="13dp"
+            android:layout_y="251dp"
+            app:srcCompat="@drawable/static_11" />
+
+        <TextView
+            android:id="@+id/ship1CountLabel3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="21dp"
+            android:layout_y="280dp"
+            android:text="4" />
+
+        <TextView
+            android:id="@+id/ship4CountLabel3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="21dp"
+            android:layout_y="414dp"
+            android:text="4" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="30dp"
+            android:layout_height="107dp"
+            android:layout_x="10dp"
+            android:layout_y="303dp"
+            app:srcCompat="@drawable/static_4_v" />
+
+        <AbsoluteLayout
+            android:id="@+id/board3"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_x="83dp"
+            android:layout_y="249dp">
+
+        </AbsoluteLayout>
+
+        <ImageView
+            android:id="@+id/ship1CountLabel3"
+            android:layout_width="29dp"
+            android:layout_height="45dp"
+            android:layout_x="50dp"
+            android:layout_y="363dp"
+            app:srcCompat="@drawable/static_22" />
+
+        <TextView
+            android:id="@+id/ship2CountLabel3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="60dp"
+            android:layout_y="412dp"
+            android:text="4" />
+
+        <TextView
+            android:id="@+id/ship3CountLabel3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="57dp"
+            android:layout_y="337dp"
+            android:text="4" />
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="86dp"
+            android:layout_x="48dp"
+            android:layout_y="250dp"
+            app:srcCompat="@drawable/static_33" />
+
+        <Button
+            android:id="@+id/sendMessageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_x="184dp"
+            android:layout_y="203dp"
+            android:text="send" />
+
+        <Button
+            android:id="@+id/fireButton"
+            android:layout_width="63dp"
+            android:layout_height="36dp"
+            android:layout_x="283dp"
+            android:layout_y="204dp"
+            android:text="fire" />
+
+        <AbsoluteLayout
+            android:id="@+id/himSelfBoard"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_x="184dp"
+            android:layout_y="13dp">
+
+        </AbsoluteLayout>
+
+        <ScrollView
+            android:id="@+id/scrollChatInGame"
+            android:layout_width="176dp"
+            android:layout_height="188dp"
+            android:layout_x="4dp"
+            android:layout_y="10dp">
+
+            <EditText
+                android:id="@+id/gameChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_x="167dp"
+                android:layout_y="283dp"
+                android:ems="10"
+                android:inputType="textMultiLine" />
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/messageFieldInGame"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_x="10dp"
+            android:layout_y="204dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <Button
+            android:id="@+id/surrenderButton"
+            android:layout_width="73dp"
+            android:layout_height="67dp"
+            android:layout_x="5dp"
+            android:layout_y="434dp"
+            android:text="surrender" />
+
+    </AbsoluteLayout>
+</android.support.constraint.ConstraintLayout>

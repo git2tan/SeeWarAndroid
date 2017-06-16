@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.seawar.StatisticActivity">
+
+    <AbsoluteLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <ListView
+            android:id="@+id/statisticList"
+            android:layout_width="match_parent"
+            android:layout_height="375dp"
+            android:layout_x="3dp"
+            android:layout_y="39dp" />
+
+        <TextView
+            android:id="@+id/statisticHeader"
+            android:layout_width="154dp"
+            android:layout_height="27dp"
+            android:layout_x="120dp"
+            android:layout_y="6dp"
+            tools:layout_editor_absoluteX="-553dp"
+            tools:layout_editor_absoluteY="501dp" />
+
+        <Button
+            android:id="@+id/buttonPrev5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="33dp"
+            android:layout_y="435dp"
+            android:text="prev 5" />
+
+        <Button
+            android:id="@+id/turnStatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="155dp"
+            android:layout_y="436dp"
+            android:text="me" />
+
+        <Button
+            android:id="@+id/buttonNext5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="276dp"
+            android:layout_y="435dp"
+            android:text="next 5" />
+
+    </AbsoluteLayout>
+
+</android.support.constraint.ConstraintLayout>

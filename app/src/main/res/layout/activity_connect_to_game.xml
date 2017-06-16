@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.seawar.ConnectToGameActivity">
+
+    <AbsoluteLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="14dp"
+            android:layout_y="8dp"
+            android:text="Opponent name" />
+
+        <TextView
+            android:id="@+id/opponentNameLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="123dp"
+            android:layout_y="9dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="190dp"
+            android:layout_y="9dp"
+            android:text="State" />
+
+        <TextView
+            android:id="@+id/opponentStateLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="231dp"
+            android:layout_y="10dp" />
+
+        <TextView
+            android:id="@+id/observersCountLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="132dp"
+            android:layout_y="30dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="14dp"
+            android:layout_y="30dp"
+            android:text="Observers count:" />
+
+        <ImageView
+            android:id="@+id/ship1Image2"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_x="13dp"
+            android:layout_y="54dp"
+            app:srcCompat="@drawable/static_1" />
+
+        <ImageView
+            android:id="@+id/ship2Image2"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_x="100dp"
+            android:layout_y="54dp"
+            app:srcCompat="@drawable/static_2" />
+
+        <ImageView
+            android:id="@+id/ship3Image2"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_x="187dp"
+            android:layout_y="54dp"
+            app:srcCompat="@drawable/static_3" />
+
+        <ImageView
+            android:id="@+id/ship4Image2"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_x="276dp"
+            android:layout_y="53dp"
+            app:srcCompat="@drawable/static_4" />
+
+        <TextView
+            android:id="@+id/ship1CountLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="50dp"
+            android:layout_y="90dp"
+            android:text="4" />
+
+        <TextView
+            android:id="@+id/ship2CountLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="137dp"
+            android:layout_y="89dp"
+            android:text="4" />
+
+        <TextView
+            android:id="@+id/ship3CountLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="223dp"
+            android:layout_y="89dp"
+            android:text="4" />
+
+        <TextView
+            android:id="@+id/ship4CountLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="313dp"
+            android:layout_y="88dp"
+            android:text="4" />
+
+        <CheckBox
+            android:id="@+id/readyCheckBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="324dp"
+            android:layout_y="237dp" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="323dp"
+            android:layout_y="214dp"
+            android:text="Ready" />
+
+        <Button
+            android:id="@+id/turnButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="255dp"
+            android:layout_y="375dp"
+            android:text="turn" />
+
+        <Button
+            android:id="@+id/undoButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="38dp"
+            android:layout_y="374dp"
+            android:text="undo" />
+
+        <Button
+            android:id="@+id/resetButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="36dp"
+            android:layout_y="428dp"
+            android:text="reset" />
+
+        <ImageView
+            android:id="@+id/shipOrientationImage2"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_x="133dp"
+            android:layout_y="377dp"
+            app:srcCompat="@drawable/static_4" />
+
+        <AbsoluteLayout
+            android:id="@+id/board2connect"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_x="64dp"
+            android:layout_y="118dp">
+
+        </AbsoluteLayout>
+
+    </AbsoluteLayout>
+</android.support.constraint.ConstraintLayout>

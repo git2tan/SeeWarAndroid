@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.seawar.LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="369dp"
+        android:layout_height="496dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registraion"
+            tools:layout_editor_absoluteX="136dp"
+            tools:layout_editor_absoluteY="327dp"
+            android:layout_below="@+id/loginButton"
+            android:layout_alignRight="@+id/loginButton"
+            android:layout_alignEnd="@+id/loginButton"
+            android:layout_marginTop="25dp" />
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="112dp"
+            android:layout_height="48dp"
+            android:text="Login"
+            tools:layout_editor_absoluteX="136dp"
+            tools:layout_editor_absoluteY="264dp"
+            android:layout_below="@+id/passwordField"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp" />
+
+        <EditText
+            android:id="@+id/passwordField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteX="85dp"
+            tools:layout_editor_absoluteY="197dp"
+            android:layout_below="@+id/loginField"
+            android:layout_alignLeft="@+id/loginField"
+            android:layout_alignStart="@+id/loginField"
+            android:layout_marginTop="26dp" />
+
+        <EditText
+            android:id="@+id/loginField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Admin"
+            tools:layout_editor_absoluteX="84dp"
+            tools:layout_editor_absoluteY="133dp"
+            android:layout_below="@+id/errorLabel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="36dp" />
+
+        <TextView
+            android:id="@+id/errorLabel"
+            android:layout_width="224dp"
+            android:layout_height="23dp"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.seawar.LobbyActivity">
+
+    <AbsoluteLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <Button
+            android:id="@+id/sendMessageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="266dp"
+            android:layout_y="388dp"
+            android:text="send" />
+
+        <EditText
+            android:id="@+id/messageField"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:layout_x="37dp"
+            android:layout_y="390dp"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <ListView
+            android:id="@+id/listOfGame"
+            android:layout_width="321dp"
+            android:layout_height="179dp"
+            android:layout_x="38dp"
+            android:layout_y="17dp"
+            android:choiceMode="singleChoice" />
+
+        <ScrollView
+            android:id="@+id/scrollView123"
+            android:layout_width="327dp"
+            android:layout_height="176dp"
+            android:layout_x="36dp"
+            android:layout_y="200dp">
+
+            <EditText
+                android:id="@+id/lobbyChat"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_x="38dp"
+                android:layout_y="210dp"
+                android:ems="10"
+                android:inputType="textMultiLine" />
+        </ScrollView>
+
+        <Button
+            android:id="@+id/connectToGameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="241dp"
+            android:layout_y="446dp"
+            android:text="connect" />
+
+        <Button
+            android:id="@+id/createGameButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="132dp"
+            android:layout_y="446dp"
+            android:text="create" />
+
+        <Button
+            android:id="@+id/connectToGameAsObsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="29dp"
+            android:layout_y="446dp"
+            android:text="observer" />
+    </AbsoluteLayout>
+</android.support.constraint.ConstraintLayout>

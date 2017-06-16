@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.seawar.RegistrationActivity">
+
+    <AbsoluteLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp">
+
+        <EditText
+            android:id="@+id/addLoginField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="93dp"
+            android:layout_y="122dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Add here your new login"
+            tools:layout_editor_absoluteX="84dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <EditText
+            android:id="@+id/addPasswordField1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="92dp"
+            android:layout_y="182dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/addPasswordField2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="91dp"
+            android:layout_y="239dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/registrationButtonNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="140dp"
+            android:layout_y="300dp"
+            android:text="registration" />
+
+        <TextView
+            android:id="@+id/errorLabel"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_x="91dp"
+            android:layout_y="86dp" />
+    </AbsoluteLayout>
+
+</android.support.constraint.ConstraintLayout>

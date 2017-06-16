@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SeaWar.iml" filepath="$PROJECT_DIR$/SeaWar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SeeWarAndroid.iml" filepath="$PROJECT_DIR$/SeeWarAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

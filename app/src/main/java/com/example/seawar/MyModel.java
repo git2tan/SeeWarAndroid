@@ -97,7 +97,7 @@ public class MyModel extends Observable implements IModel{
 
     @Override
     public String getDefaultIP() {
-        return "192.168.1.39";
+        return "192.168.1.37";
     }
 
     @Override

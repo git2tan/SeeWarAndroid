@@ -50,6 +50,8 @@ public class LobbyActivity extends AppCompatActivity implements IRefreshable{
         sendMessageButton = (Button)findViewById(R.id.sendMessageButton);
         createGameButton = (Button)findViewById(R.id.createGameButton2);
         scrollView = (ScrollView)findViewById(R.id.scrollView123);
+        connectToGameButton.setEnabled(selectedGameIndx != -1);
+        connectAsObsButton.setEnabled(selectedGameIndx != -1);
 
         ArrayList<String> myListOfGame = model.getListOfServerGamesString();
         final ArrayAdapter<String> adapter;
@@ -61,6 +63,7 @@ public class LobbyActivity extends AppCompatActivity implements IRefreshable{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedGameIndx = position;
                 Toast.makeText(getApplicationContext(), "Selected Item :" + position, Toast.LENGTH_SHORT).show();
+                refresh();
             }
         });
         lobbyChat.setEnabled(false);
@@ -128,6 +131,9 @@ public class LobbyActivity extends AppCompatActivity implements IRefreshable{
         ArrayAdapter<String> newAdapter = new ArrayAdapter<String>(this,
             android.R.layout.simple_list_item_1, newMyListOfGame);
         listOfGame.setAdapter(newAdapter);
+
+        connectToGameButton.setEnabled(selectedGameIndx != -1);
+        connectAsObsButton.setEnabled(selectedGameIndx != -1);
     }
 
     public android.os.Handler handler = new android.os.Handler(new android.os.Handler.Callback() {
@@ -183,5 +189,12 @@ public class LobbyActivity extends AppCompatActivity implements IRefreshable{
 
         controller.resumeActivity(this);
         refresh();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+
+        selectedGameIndx = -1;
     }
 }

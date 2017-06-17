@@ -163,7 +163,7 @@ public class ConnectToGameActivity extends AppCompatActivity implements IRefresh
         public boolean handleMessage(android.os.Message msg) {
 
             if (msg.what == IModel.ModelState.startFrame.ordinal()) {
-                Activity tmp = new LoginActivity();
+                Activity tmp = new MainActivity();
                 Intent intent = new Intent(ConnectToGameActivity.this, tmp.getClass());
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

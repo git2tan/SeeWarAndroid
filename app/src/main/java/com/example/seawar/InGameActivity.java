@@ -153,7 +153,7 @@ public class InGameActivity extends AppCompatActivity implements IRefreshable{
         public boolean handleMessage(android.os.Message msg) {
 
             if (msg.what == IModel.ModelState.startFrame.ordinal()) {
-                Activity tmp = new LoginActivity();
+                Activity tmp = new MainActivity();
                 Intent intent = new Intent(InGameActivity.this, tmp.getClass());
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

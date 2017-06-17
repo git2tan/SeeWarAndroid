@@ -578,6 +578,7 @@ public class MyController implements IController, Observer {
 
     @Override
     public void disconnectFromLobby() {
-        sender.sendMessage(new Message(116,"",""));
+        if(sender != null)
+            sender.sendMessage(new Message(116,"",""));
     }
 }

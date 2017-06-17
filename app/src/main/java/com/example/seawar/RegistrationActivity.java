@@ -63,13 +63,9 @@ public class RegistrationActivity extends AppCompatActivity implements IRefresha
         public boolean handleMessage(android.os.Message msg) {
 
             if (msg.what == IModel.ModelState.startFrame.ordinal()) {
-                Activity tmp = new LoginActivity();
+                Activity tmp = new MainActivity();
                 Intent intent = new Intent(RegistrationActivity.this, tmp.getClass());
-                startActivity(intent);
-            }
-            else if(msg.what == IModel.ModelState.mainMenuFrame.ordinal()){
-                Activity tmp = new MainMenuActivity();
-                Intent intent = new Intent(RegistrationActivity.this, tmp.getClass());
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
             else if(msg.what == IModel.ModelState.onlyRefresh.ordinal()){

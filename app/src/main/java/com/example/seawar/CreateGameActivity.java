@@ -215,7 +215,7 @@ public class CreateGameActivity extends AppCompatActivity implements IRefreshabl
         public boolean handleMessage(android.os.Message msg) {
 
             if (msg.what == IModel.ModelState.startFrame.ordinal()) {
-                Activity tmp = new LoginActivity();
+                Activity tmp = new MainActivity();
                 Intent intent = new Intent(CreateGameActivity.this, tmp.getClass());
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

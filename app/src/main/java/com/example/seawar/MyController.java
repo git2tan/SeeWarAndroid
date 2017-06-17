@@ -26,8 +26,10 @@ public class MyController implements IController, Observer {
     private OpponentGameBoardController opponentGameBoardController;
     private NullController nullController;
     private int offset;
+    private int prevOffset;
     private MyController(){
         model = MyModel.getInstance();
+        prevOffset = 0;
         offset = -1;
         sender = null;
         model.addObserver(this);
@@ -526,6 +528,9 @@ public class MyController implements IController, Observer {
     @Override
     public void refreshStatisticHandler(int offset) {
         if (this.offset != offset){
+            if(this.offset != -1)
+                prevOffset = this.offset;
+
             sender.sendMessage(new Message(137, "" + offset, ""));
             this.offset = offset;
         }
@@ -560,10 +565,15 @@ public class MyController implements IController, Observer {
 
     @Override
     public void showMyStatsHandler(boolean isNowMyStatTurn) {
-        if (isNowMyStatTurn)
-            sender.sendMessage(new Message(149, model.getLogin(),""));
-        else
+        if (isNowMyStatTurn) {
+
+            sender.sendMessage(new Message(149, model.getLogin(), ""));
+            if (prevOffset < offset)
+                offset = prevOffset;
+        }
+        else {
             sender.sendMessage(new Message(137, "" + offset, ""));
+        }
     }
 
     @Override

@@ -54,15 +54,14 @@ public class StatisticActivity extends AppCompatActivity implements IRefreshable
                 isNowShowMyStats = !isNowShowMyStats;
                 turnStatisticButton.setText(isNowShowMyStats?"ME":"ALL");
                 if(isNowShowMyStats) {
-                    controller.showMyStatsHandler(isNowShowMyStats);
                     buttonPrev5.setEnabled(!isNowShowMyStats);
                     buttonNext5.setEnabled(!isNowShowMyStats);
+                    controller.showMyStatsHandler(isNowShowMyStats);
                 }
                 else {
-                    controller.showMyStatsHandler(isNowShowMyStats);
                     buttonPrev5.setEnabled(!isNowShowMyStats);
                     buttonNext5.setEnabled(!isNowShowMyStats);
-//                    refresh();
+                    controller.showMyStatsHandler(isNowShowMyStats);
                 }
             }
         });

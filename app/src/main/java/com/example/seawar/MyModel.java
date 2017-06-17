@@ -97,7 +97,7 @@ public class MyModel extends Observable implements IModel{
 
     @Override
     public String getDefaultIP() {
-        return "192.168.1.37";
+        return "192.168.1.33";
     }
 
     @Override
@@ -417,11 +417,15 @@ public class MyModel extends Observable implements IModel{
         notifyObservers();
     }
     public void setIsWinner(){
+        game.setThisReady(false);
+        game.setOpponentReady(false);
         isWinner = true;
         setChanged();
         notifyObservers();
     }
     public void setIsLoser(){
+        game.setThisReady(false);
+        game.setOpponentReady(false);
         isLoser = true;
         setChanged();
         notifyObservers();

@@ -424,7 +424,8 @@ public class MyController implements IController, Observer {
 
     @Override
     public void cancelCreateGameButton() {
-        sender.sendMessage(new Message(150,"",""));
+        if (model.getConnectionState() == IModel.ConnectionState.online && sender != null)
+            sender.sendMessage(new Message(150,"",""));
     }
 
     @Override
@@ -536,7 +537,7 @@ public class MyController implements IController, Observer {
 
     @Override
     public void disconnect() {
-        if (model.getConnectionState() != IModel.ConnectionState.offline)
+        if (model.getConnectionState() != IModel.ConnectionState.offline && sender != null)
             sender.sendMessage(new Message(300, "", ""));
         model.resetData();
     }

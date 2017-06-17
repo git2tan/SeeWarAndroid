@@ -294,7 +294,10 @@ public class InGameActivity extends AppCompatActivity implements IRefreshable{
 
     protected void onDestroy(){
         super.onDestroy();
-        controller.cancelCreateGameButton();
+        if (model.getConnectionState() == IModel.ConnectionState.online)
+            controller.cancelCreateGameButton();
+        else
+            System.err.println ("Предотвращена попытка отправки в уже отключенное состояние");
         System.err.println("InGameActivity.onDestroy()!");
     }
 }

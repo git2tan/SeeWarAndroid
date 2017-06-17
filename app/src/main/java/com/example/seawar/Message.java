@@ -321,6 +321,10 @@ public class Message {
                 // сообщение от сервера об отключении
                 this.numberOfCommand = 301;
             } break;
+            case 302:{
+                // служебное сообщение от сервера чтобы просто завершить поток
+                this.numberOfCommand = 302;
+            } break;
             case 998:{
                 // пустой список статистики
                 this.numberOfCommand = 998;

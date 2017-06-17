@@ -368,6 +368,9 @@ public class MyController implements IController, Observer {
                 sender = null;  // переделать
                 model.resetData();
             }break;
+            case 302:{
+
+            }break;
             case 998:{
                 // пришел пустой список статистики
             }break;

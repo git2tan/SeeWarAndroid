@@ -316,6 +316,9 @@ public class Decoder {
             case 301:{
                 tmp = new Message(301, "", "");
             }break;
+            case 302:{
+                tmp = new Message(302, "", "");
+            }break;
             case 998:{
                 tmp = new Message(998,"","");
             }break;
@@ -577,6 +580,9 @@ public class Decoder {
                 }break;
                 case 301:{
                     textMessage += "301";
+                }break;
+                case 302:{
+                    textMessage += "302";
                 }break;
                 case 998:{
                     textMessage += "998";

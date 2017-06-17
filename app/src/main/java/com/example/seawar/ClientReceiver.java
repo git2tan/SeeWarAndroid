@@ -29,10 +29,10 @@ public class ClientReceiver implements Runnable{
                     System.err.println("Получил от сервера: " + fromServer);
                     Message message = decoder.decodeString(fromServer);
                     if(!message.isEmpty()) {
-                        if (message.getNumberOfCommand() != 301)
+                        if (message.getNumberOfCommand() != 302)
                             handler.handleMessageFromServer(message);               //если сообщение удачно расшифрованно - отправляем его клиенту (то есть геймеру) вызывая обработчик
                         else {
-                            handler.handleMessageFromServer(message);
+                            //handler.handleMessageFromServer(message);
                             break;
                         }
                     }

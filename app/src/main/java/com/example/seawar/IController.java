@@ -33,6 +33,7 @@ public interface IController {
     void mouseClickedSpriteOpponentHandler(int coordX, int coordY);
     void buttonFireHandler();
     void endGameHandler();
+    void disconnectFromLobby();
     IClickedController getHimselfGameBoardController();
     IClickedController getOpponentGameBoardController();
     IClickedController getNullController();

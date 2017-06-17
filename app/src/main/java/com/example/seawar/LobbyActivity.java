@@ -203,6 +203,6 @@ public class LobbyActivity extends AppCompatActivity implements IRefreshable{
     protected void onDestroy(){
         super.onDestroy();
         System.err.println("LobbyActivity DESTROY!");
-        controller.disconnect();
+        controller.disconnectFromLobby();
     }
 }

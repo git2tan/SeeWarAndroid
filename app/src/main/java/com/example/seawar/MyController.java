@@ -575,4 +575,9 @@ public class MyController implements IController, Observer {
     public void stopObservGameHandler() {
         sender.sendMessage(new Message(152,"",""));
     }
+
+    @Override
+    public void disconnectFromLobby() {
+        sender.sendMessage(new Message(116,"",""));
+    }
 }

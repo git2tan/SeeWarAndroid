@@ -45,38 +45,38 @@ public class MyController implements IController, Observer {
     }
     @Override
     public void buttonConnectHandler(final String IP) {
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if ( !(model.getConnectionState() == IModel.ConnectionState.online) || (model.getConnectionState() == IModel.ConnectionState.cantLogin) || (model.getConnectionState() == IModel.ConnectionState.cantConnectToServer)){
-                    if (sender == null) {
-                        sender = new MySender(MyController.getInstance());
-                        try {
-//                            Socket clientSocket = new Socket(IP, 4444);
-                            Socket clientSocket = new Socket();
-                            clientSocket.connect(new InetSocketAddress(IP, 4444), 500);
-                            System.err.println("Client with name " + clientSocket.toString());
-                            ClientReceiver receiver = new ClientReceiver(MyController.getInstance(), clientSocket);
-                            sender.setSocket(clientSocket);
-                            receiverThread = new Thread(receiver);
-                            receiverThread.start();
-                            model.setConnectionState(IModel.ConnectionState.online);
-                            model.setCurState(IModel.ModelState.loginFrame);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            model.setConnectionState(IModel.ConnectionState.cantConnectToServer);
-                            System.err.println("Ошибка подключения к серверу.");
-                            sender  = null;
+        if ( (model.getConnectionState() == IModel.ConnectionState.offline) || (model.getConnectionState() == IModel.ConnectionState.cantConnectToServer)){
+            Thread thread1 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                        if (sender == null) {
+                            sender = new MySender(MyController.getInstance());
+                            try {
+                                Socket clientSocket = new Socket();
+                                clientSocket.connect(new InetSocketAddress(IP, 4444), 500);
+                                System.err.println("Client with name " + clientSocket.toString());
+                                ClientReceiver receiver = new ClientReceiver(MyController.getInstance(), clientSocket);
+                                sender.setSocket(clientSocket);
+                                receiverThread = new Thread(receiver);
+                                receiverThread.start();
+                                model.setConnectionState(IModel.ConnectionState.online);
+                                model.setCurState(IModel.ModelState.loginFrame);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                model.setConnectionState(IModel.ConnectionState.cantConnectToServer);
+                                System.err.println("Ошибка подключения к серверу.");
+                                sender  = null;
+                            }
                         }
-                    }
+                    model.setCurIP(IP);
                 }
-                else{
-                    model.setCurState(IModel.ModelState.loginFrame);
-                }
-                model.setCurIP(IP);
-            }
-        });
-        thread1.start();
+            });
+            thread1.start();
+        }
+        else{
+            model.setCurState(IModel.ModelState.loginFrame);
+        }
     }
 
     @Override
@@ -364,6 +364,7 @@ public class MyController implements IController, Observer {
             }break;
             case 301:{
                 // по каким-то причинам мы отключились
+                System.err.println("Обработал отключение");
                 sender = null;  // переделать
                 model.resetData();
             }break;

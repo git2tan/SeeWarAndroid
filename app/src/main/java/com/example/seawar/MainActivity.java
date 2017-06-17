@@ -99,8 +99,11 @@ public class MainActivity extends AppCompatActivity implements IRefreshable {
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
-            else if(caseState == IModel.ModelState.onlyRefresh.ordinal()){
-                    refresh();
+            else if (caseState == IModel.ModelState.startFrame.ordinal()){
+                refresh();
+            }
+            else if (caseState == IModel.ModelState.onlyRefresh.ordinal()){
+                refresh();
             }
             System.err.println("Вернул true");
             return true;
@@ -126,10 +129,10 @@ public class MainActivity extends AppCompatActivity implements IRefreshable {
         refresh();
     }
 
-//    @Override
-//    protected void onDestroy(){
-//        super.onDestroy();
-//        controller.disconnect();
-//        System.err.println("-----------------------------------------------------------disconnect!!!!!!!!!!!!!!!!!!!!!");
-//    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        System.err.println("MainActivity DESTROY!");
+        controller.disconnect();
+    }
 }

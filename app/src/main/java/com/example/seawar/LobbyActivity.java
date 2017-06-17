@@ -198,4 +198,11 @@ public class LobbyActivity extends AppCompatActivity implements IRefreshable{
 
         selectedGameIndx = -1;
     }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        System.err.println("LobbyActivity DESTROY!");
+        controller.disconnect();
+    }
 }

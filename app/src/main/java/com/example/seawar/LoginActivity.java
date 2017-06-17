@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements IRefreshable{
     protected void onDestroy(){
         super.onDestroy();
         System.err.println("LoginActivity.onDestroy()--------------------------------disconnect!!!!!!!!!!!!!!!!!!!!!");
-        if (model.getConnectionState() != IModel.ConnectionState.offline)
+        if (model.getConnectionState() != IModel.ConnectionState.offline && model.getConnectionState() != IModel.ConnectionState.cantConnectToServer)
             controller.disconnect();
     }
 }

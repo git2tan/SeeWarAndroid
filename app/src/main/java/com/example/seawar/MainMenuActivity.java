@@ -109,4 +109,10 @@ public class MainMenuActivity extends AppCompatActivity implements IRefreshable 
     public IModel.ModelState getRelevantState() {
         return IModel.ModelState.mainMenuFrame;
     }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        System.err.println("MainMenuActivity DESTROY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    }
 }

@@ -31,8 +31,10 @@ public class ClientReceiver implements Runnable{
                     if(!message.isEmpty()) {
                         if (message.getNumberOfCommand() != 301)
                             handler.handleMessageFromServer(message);               //если сообщение удачно расшифрованно - отправляем его клиенту (то есть геймеру) вызывая обработчик
-                        else
+                        else {
+                            handler.handleMessageFromServer(message);
                             break;
+                        }
                     }
                 }else{
                     break;

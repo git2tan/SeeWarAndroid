@@ -82,6 +82,7 @@ public class LobbyActivity extends AppCompatActivity implements IRefreshable{
             public void onClick(View v) {
                 if(!(messageField.getText().length() == 0)){
                     controller.buttonSendHandler(messageField.getText().toString());
+                    messageField.setText("");
                 }
             }
         });

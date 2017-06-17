@@ -95,8 +95,10 @@ public class InGameActivity extends AppCompatActivity implements IRefreshable{
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(messageField.getText().length() != 0)
+                if(messageField.getText().length() != 0) {
                     controller.buttonSendMessageToGameChat(messageField.getText().toString());
+                    messageField.setText("");
+                }
             }
         });
         fireButton = (Button)findViewById(R.id.fireButton);

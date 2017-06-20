@@ -12,6 +12,7 @@ public interface IModel {
     public ModelState getState();
     public boolean isOtherView();
     public String getDefaultIP();
+    public int getDefaultPort();
     public String getCurrentIP();
     public ConnectionState getConnectionState();
     public ModelState getCurrentState();

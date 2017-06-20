@@ -112,15 +112,7 @@ public class MyController implements IController, Observer {
         }
     }
 
-    @Override
-    public void connectErrorHandler() {
 
-    }
-
-    @Override
-    public void activateViewHandler(IModel.ModelState state) {
-        model.setCurState(state);
-    }
 
     @Override
     public void buttonJoinHandler() {

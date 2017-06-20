@@ -49,10 +49,12 @@
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="98dp"
             tools:layout_editor_absoluteY="150dp"
+            android:layout_marginTop="33dp"
             android:layout_below="@+id/connectStateLabel"
-            android:layout_alignRight="@+id/connectStateLabel"
-            android:layout_alignEnd="@+id/connectStateLabel"
-            android:layout_marginTop="32dp" />
+            android:layout_alignRight="@+id/connectButton"
+            android:layout_alignEnd="@+id/connectButton"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp" />
 
         <TextView
             android:id="@+id/connectStateLabel"
@@ -66,6 +68,18 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="86dp" />
+
+        <EditText
+            android:id="@+id/portField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:layout_above="@+id/connectButton"
+            android:layout_toRightOf="@+id/connectIPField"
+            android:layout_alignRight="@+id/connectStateLabel"
+            android:layout_alignEnd="@+id/connectStateLabel"
+            android:text="4444"/>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

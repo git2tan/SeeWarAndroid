@@ -12,9 +12,7 @@ public interface IController {
     void buttonLoginHandler(String login, String pass);
     void buttonSendHandler(String message);
     void buttonSendMessageToGameChat(String message);
-    void connectErrorHandler();
     void disconnect();
-    void activateViewHandler(IModel.ModelState state);
     void handleMessageFromServer(Message message);
     void buttonJoinHandler();
     void buttonCreateGameHandler();

@@ -199,12 +199,10 @@ public class CreateGameActivity extends AppCompatActivity implements IRefreshabl
         observersCountLabel.setText(model.getGame().getObserverCount() + "");
 
         if(model.isAllShipOnBoard()){
-//            message.setText("");
             readyCheckBox.setEnabled(true);
         }
         else{
             readyCheckBox.setEnabled(false);
-//            message.setText("Не все корабли установлены на поле");
         }
 
         startButton.setEnabled(readyCheckBox.isChecked() && model.isOpponentReady());

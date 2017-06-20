@@ -101,6 +101,9 @@ public class MyModel extends Observable implements IModel{
     }
 
     @Override
+    public int getDefaultPort(){return 4444;}
+
+    @Override
     public String getCurrentIP() {
         return curIP;
     }

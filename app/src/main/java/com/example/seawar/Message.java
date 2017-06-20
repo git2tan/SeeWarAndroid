@@ -26,7 +26,7 @@ public class Message {
 
     public Message(){
         isEmpty = true;
-        numberOfCommand = 999;
+        numberOfCommand = MessageCommand.EmptyMessage;
 
     }
 
@@ -34,315 +34,315 @@ public class Message {
     public Message(int numberOfCommand, String substr1, String substr2){
 
         switch (numberOfCommand){
-            case 100:{
+            case MessageCommand.C_S_TryLogin:{
                 //От клиента к серверу команда пытаюсь залогиниться
                 this.numberOfCommand = numberOfCommand;
                 login = substr1;
                 pass = substr2;
                 isEmpty = false;
             } break;
-            case 101:{
+            case MessageCommand.S_C_SuccessLogin:{
                 //от сервера клиенту успешная валидация логин-пароля
-                this.numberOfCommand = 101;
+                this.numberOfCommand = MessageCommand.S_C_SuccessLogin;
                 login = substr1;
                 pass = substr2;
                 isEmpty = false;
             } break;
-            case 102:{
+            case MessageCommand.S_C_InValidLogin:{
                 //от сервера клиенту не успешная валидация
-                this.numberOfCommand = 102;
+                this.numberOfCommand = MessageCommand.S_C_InValidLogin;
                 isEmpty = false;
             } break;
-            case 103:{
+            case MessageCommand.C_S_TryConnectToLobby:{
                 //от клиента серверу пытаюсь войти в лобби для поиска игры
-                this.numberOfCommand = 103;
+                this.numberOfCommand = MessageCommand.C_S_TryConnectToLobby;
                 isEmpty = false;
             }break;
-            case 104:{
+            case MessageCommand.S_C_YouAllowConnectToLobby:{
                 //от сервера клиенту разрешено войти в лобби
-                this.numberOfCommand = 104;
+                this.numberOfCommand = MessageCommand.S_C_YouAllowConnectToLobby;
                 isEmpty = false;
             }break;
-            case 105:{
+            case MessageCommand.C_S_MessageToLobby:{
                 //от клиента серверу - сообщение в лобби-чат
-                this.numberOfCommand = 105;
+                this.numberOfCommand = MessageCommand.C_S_MessageToLobby;
                 this.login = substr1;
                 this.message = substr2;
                 isEmpty = false;
             } break;
-            case 106:{
+            case MessageCommand.S_C_MessageToLobbyFromLogin:{
                 //от сервера клиенту сообщение в лобби-чат от такого-то логина
-                this.numberOfCommand = 106;
+                this.numberOfCommand = MessageCommand.S_C_MessageToLobbyFromLogin;
                 this.login = substr1;
                 this.message = substr2;
                 isEmpty = false;
             }break;
-            case 107:{
+            case MessageCommand.S_C_MessageToLobbyFromServer:{
                 //от сервера клиенту сообщение сервера (о подключении нового геймера к лобби)
-                this.numberOfCommand = 107;
+                this.numberOfCommand = MessageCommand.S_C_MessageToLobbyFromServer;
                 this.login = "SERVER";
                 this.message = substr1;
             }break;
-            case 108:{
+            case MessageCommand.C_S_TryToRegisterNewLogin:{
                 //запрос регистрации нового польлзователя
-                this.numberOfCommand = 108;
+                this.numberOfCommand = MessageCommand.C_S_TryToRegisterNewLogin;
                 this.login = substr1;
                 this.pass = substr2;
             }break;
-            case 109:{
+            case MessageCommand.S_C_RegistrationSuccess:{
                 //Положительный ответ от сервера о регистрации
-                this.numberOfCommand = 109;
+                this.numberOfCommand = MessageCommand.S_C_RegistrationSuccess;
                 this.login = substr1;
                 this.pass = substr2;
             }break;
-            case 110:{
+            case MessageCommand.S_C_RegistrationNotSuccess:{
                 //отрицательный ответ от сервера о регистрации
-                this.numberOfCommand = 110;
+                this.numberOfCommand = MessageCommand.S_C_RegistrationNotSuccess;
             }break;
-            case 111:{
+            case MessageCommand.C_S_WantToCreateGame:{
                 //запрос серверу на создание игры
-                this.numberOfCommand = 111;
+                this.numberOfCommand = MessageCommand.C_S_WantToCreateGame;
             }break;
-            case 112:{
+            case MessageCommand.S_C_AllowToCreateGame:{
                 //ответ от сервера на запрос создания игры
-                this.numberOfCommand = 112;
+                this.numberOfCommand = MessageCommand.S_C_AllowToCreateGame;
             }break;
-            case 113:{
+            case MessageCommand.C_S_WantToConnectToGame:{
                 //запрос на подключение к игре
-                this.numberOfCommand = 113;
+                this.numberOfCommand = MessageCommand.C_S_WantToConnectToGame;
                 this.gameID = Integer.parseInt(substr1);
             }break;
-            case 114:{
+            case MessageCommand.S_C_SuccessConnectToGame:{
                 //положительный ответ на подключение к игре
-                this.numberOfCommand = 114;
+                this.numberOfCommand = MessageCommand.S_C_SuccessConnectToGame;
                 this.gameInfo = Decoder.ToGameInfoFromstring(substr1);
             } break;
-            case 115:{
+            case MessageCommand.S_C_NotAllowConnectToGame:{
                 //отрицательный ответ на подключение к игре
-                this.numberOfCommand = 115;
+                this.numberOfCommand = MessageCommand.S_C_NotAllowConnectToGame;
             } break;
-            case 116:{
+            case MessageCommand.C_S_ArmLeftTheLobby:{
                 //покидаем лобби вручную
-                this.numberOfCommand = 116;
+                this.numberOfCommand = MessageCommand.C_S_ArmLeftTheLobby;
             } break;
-            case 117:{
+            case MessageCommand.S_C_ToHostGamer_NewGamerConnect:{
                 //сообщение хостовому игроку о том что к игре подключился новый игрок
-                this.numberOfCommand = 117;
+                this.numberOfCommand = MessageCommand.S_C_ToHostGamer_NewGamerConnect;
                 this.login = substr1;
             } break;
-            case 118:{
+            case MessageCommand.S_C_RequesttoArmDisconnectFromLobby:{
                 // ответ на сообщение о том что игрок прервал инициализацию игры
-                this.numberOfCommand = 118;
+                this.numberOfCommand = MessageCommand.S_C_RequesttoArmDisconnectFromLobby;
             } break;
-            case 119:{
+            case MessageCommand.S_C_NewGameInfo:{
                 // сообщение об изменении игорвых данных (Изм. кол-ва обсерверовб отключении оппонента, измении Готовности игроков.
-                this.numberOfCommand = 119;
+                this.numberOfCommand = MessageCommand.S_C_NewGameInfo;
                 this.gameInfo = Decoder.ToGameInfoFromstring(substr1);
             } break;
-            case 120:{
+            case MessageCommand.C_S_GamerReadyAndSendBoard:{
                 // сообщение от клиента что пользватель готов и посылает раскладку игрового поля
-                this.numberOfCommand = 120;
+                this.numberOfCommand = MessageCommand.C_S_GamerReadyAndSendBoard;
                 this.board = Decoder.StringToArray(substr1);
             } break;
-            case 121:{
+            case MessageCommand.C_S_GamerNotReady:{
                 // сообщение от клиента что он не готов и доска не соответствует действительной
-                this.numberOfCommand = 121;
+                this.numberOfCommand = MessageCommand.C_S_GamerNotReady;
             } break;
-            case 122:{
+            case MessageCommand.C_S_HostGamerStartTheGame:{
                 // сообщение от клиента о старте игры
-                this.numberOfCommand = 122;
+                this.numberOfCommand = MessageCommand.C_S_HostGamerStartTheGame;
             } break;
-            case 123:{
+            case MessageCommand.S_C_ToHostGamerStartTheGame:{
                 // сообщение первому игроку о начале игры (право первого хода у него)
-                this.numberOfCommand = 123;
+                this.numberOfCommand = MessageCommand.S_C_ToHostGamerStartTheGame;
             } break;
-            case 124:{
+            case MessageCommand.S_C_ToGamer2StartTheGame:{
                 // сообщение второму игроку о начале игры (без возможности выполнить ход)
-                this.numberOfCommand = 124;
+                this.numberOfCommand = MessageCommand.S_C_ToGamer2StartTheGame;
             } break;
-            case 125:{
+            case MessageCommand.S_C_AllowObserveTheGame:{
                 // ответ сервера наблюдателю что можно смотреть за игрой
-                this.numberOfCommand = 125;
+                this.numberOfCommand = MessageCommand.S_C_AllowObserveTheGame;
             } break;
-            case 126:{
+            case MessageCommand.C_S_FireToCoord:{
                 // сообщение серверу - стреляю по координатам!
-                this.numberOfCommand = 126;
+                this.numberOfCommand = MessageCommand.C_S_FireToCoord;
                 coordX = Integer.parseInt(substr1);
                 coordY = Integer.parseInt(substr2);
             }break;
-            case 127:{
+            case MessageCommand.S_C_YouHitToCoord:{
                 // ответ сервера попал по координатам (ход не переходит)
-                this.numberOfCommand = 127;
+                this.numberOfCommand = MessageCommand.S_C_YouHitToCoord;
                 coordX = Integer.parseInt(substr1);
                 coordY = Integer.parseInt(substr2);
             } break;
-            case 128:{
+            case MessageCommand.S_C_YouMissToCoord:{
                 // ответ сервера по координатам ()() - пусто  (ход переходит к оппоненту)
-                this.numberOfCommand = 128;
+                this.numberOfCommand = MessageCommand.S_C_YouMissToCoord;
                 coordX = Integer.parseInt(substr1);
                 coordY = Integer.parseInt(substr2);
             } break;
-            case 129:{
+            case MessageCommand.S_C_OpponentHitToYou:{
                 // сообщение сервера что по игроку стрельнули и попали (не его ход)
-                this.numberOfCommand = 129;
+                this.numberOfCommand = MessageCommand.S_C_OpponentHitToYou;
                 coordX = Integer.parseInt(substr1);
                 coordY = Integer.parseInt(substr2);
             } break;
-            case 130:{
+            case MessageCommand.S_C_OpponentMissToYou:{
                 // сообщение сервера что по игроку стрельнули и промазали (его ход)
-                this.numberOfCommand = 130;
+                this.numberOfCommand = MessageCommand.S_C_OpponentMissToYou;
                 coordX = Integer.parseInt(substr1);
                 coordY = Integer.parseInt(substr2);
             } break;
-            case 131:{
+            case MessageCommand.S_C_YouDestroyTheShipByCoord:{
                 // ответ сервера что по указанным координатам "потопили" корабль
-                this.numberOfCommand = 131;
+                this.numberOfCommand = MessageCommand.S_C_YouDestroyTheShipByCoord;
                 coordX = Integer.parseInt(substr1);
                 coordY = Integer.parseInt(substr2);
             } break;
-            case 132:{
+            case MessageCommand.S_C_YourShipByCoordIsDestroyed:{
                 // уведомление сервера что ваш корабль содержащий такие координаты потоплен
-                this.numberOfCommand = 132;
+                this.numberOfCommand = MessageCommand.S_C_YourShipByCoordIsDestroyed;
                 coordX = Integer.parseInt(substr1);
                 coordY = Integer.parseInt(substr2);
             } break;
-            case 133:{
+            case MessageCommand.S_C_YouWin:{
                 // уведомление от сервера о выигрыше
-                this.numberOfCommand = 133;
+                this.numberOfCommand = MessageCommand.S_C_YouWin;
             } break;
-            case 134:{
+            case MessageCommand.S_C_YouLose:{
                 // уведомление от сервера о проигрыше
-                this.numberOfCommand = 134;
+                this.numberOfCommand = MessageCommand.S_C_YouLose;
             } break;
-            case 135:{
+            case MessageCommand.C_S_NeedStatisticFromNumber:{
                 // запрос статистики
-                this.numberOfCommand = 135;
+                this.numberOfCommand = MessageCommand.C_S_NeedStatisticFromNumber;
             }break;
-            case 136:{
+            case MessageCommand.S_C_ShowStatActivity:{
                 // ответ от сервера - переход в режим отображения статистики
-                this.numberOfCommand = 136;
+                this.numberOfCommand = MessageCommand.S_C_ShowStatActivity;
             } break;
-            case 137:{
+            case MessageCommand.C_S_NeedRefreshStatistic:{
                 // запрос новой статистики от клиента
-                this.numberOfCommand = 137;
+                this.numberOfCommand = MessageCommand.C_S_NeedRefreshStatistic;
                 variableOne = Integer.parseInt(substr1);
             }break;
-            case 138:{
+            case MessageCommand.C_S_MessageToLobbyFromlogin:{
                 //от клиента серверу - сообщение в лобби-чат
-                this.numberOfCommand = 138;
+                this.numberOfCommand = MessageCommand.C_S_MessageToLobbyFromlogin;
                 this.login = substr1;
                 this.message = substr2;
                 isEmpty = false;
             } break;
-            case 139:{
+            case MessageCommand.S_C_MessageToLobbyFromlogin:{
                 //от сервера клиенту сообщение в лобби-чат от такого-то логина
-                this.numberOfCommand = 139;
+                this.numberOfCommand = MessageCommand.S_C_MessageToLobbyFromlogin;
                 this.login = substr1;
                 this.message = substr2;
                 isEmpty = false;
             }break;
-            case 140:{
+            case MessageCommand.S_C_MessageToLobbyAboutCoonect:{
                 //от сервера клиенту сообщение сервера (о подключении кого то к игре)
-                this.numberOfCommand = 140;
+                this.numberOfCommand = MessageCommand.S_C_MessageToLobbyAboutCoonect;
                 this.login = "SERVER";
                 this.message = substr1;
             }break;
-            case 141:{
+            case MessageCommand.C_S_WantToObserverToGame:{
                 //от клиента серверу - запрос на подключение к игре в качестве обсервера
-                this.numberOfCommand = 141;
+                this.numberOfCommand = MessageCommand.C_S_WantToObserverToGame;
                 this.gameID = Integer.parseInt(substr1);
             }break;
-            case 142:{
+            case MessageCommand.S_C_ShowObserverActivity:{
                 // от сервера клиенту подключен в качестве обсервера
-                this.numberOfCommand = 142;
+                this.numberOfCommand = MessageCommand.S_C_ShowObserverActivity;
                 this.gameInfo = Decoder.ToGameInfoFromstring(substr1);
             }break;
-            case 143:{
+            case MessageCommand.S_C_LoginFireToCoordAndHit:{
                 // сообщение наблюдателям: такой-то логин попал по таким-то координатам
-                this.numberOfCommand = 143;
+                this.numberOfCommand = MessageCommand.S_C_LoginFireToCoordAndHit;
                 this.login = substr1;
                 coordX = Integer.parseInt(substr2.substring(0,1));
                 coordY = Integer.parseInt(substr2.substring(1,2));
             }break;
-            case 144:{
+            case MessageCommand.S_C_ToObs_LoginFireToCoordAndMiss:{
                 // сообщение наблюдателям: такой-то логин промазал по таким-то координатам
-                this.numberOfCommand = 144;
+                this.numberOfCommand = MessageCommand.S_C_ToObs_LoginFireToCoordAndMiss;
                 this.login = substr1;
                 coordX = Integer.parseInt(substr2.substring(0,1));
                 coordY = Integer.parseInt(substr2.substring(1,2));
             }break;
-            case 145:{
+            case MessageCommand.S_C_ToObs_LoginDestroyShipByCoord:{
                 // сообщение наблюдателям: такой-то логин убил по таким-то координатам
-                this.numberOfCommand = 145;
+                this.numberOfCommand = MessageCommand.S_C_ToObs_LoginDestroyShipByCoord;
                 this.login = substr1;
                 coordX = Integer.parseInt(substr2.substring(0,1));
                 coordY = Integer.parseInt(substr2.substring(1,2));
             }break;
-            case 146:{
+            case MessageCommand.S_C_ToObs_LoginWin:{
                 // сообщение наблюдателям: такой-то логин выиграл
-                this.numberOfCommand = 146;
+                this.numberOfCommand = MessageCommand.S_C_ToObs_LoginWin;
                 this.login = substr1;
             }break;
-            case 147:{
+            case MessageCommand.S_C_ToObs_ActualGameInfo:{
                 // сообщение с текущим состоянием игровых полей (для наблюдателя)
-                this.numberOfCommand = 147;
+                this.numberOfCommand = MessageCommand.S_C_ToObs_ActualGameInfo;
                 this.board = Decoder.StringToArray(substr1);
                 this.board2 = Decoder.StringToArray(substr2);
             }break;
-            case 148:{
+            case MessageCommand.C_S_GamerWantToLose:{
                 // к->с сообщение о том что игрок пожелал сдаться...
-                this.numberOfCommand = 148;
+                this.numberOfCommand = MessageCommand.C_S_GamerWantToLose;
             }break;
-            case 149:{
+            case MessageCommand.C_S_WantStatAboutlogin:{
                 // запрос статистики по конкретному пользователю
-                this.numberOfCommand = 149;
+                this.numberOfCommand = MessageCommand.C_S_WantStatAboutlogin;
                 this.login = substr1;
             }break;
-            case 150:{
+            case MessageCommand.C_S_LeftFromTheGame:{
                 // к->c ручной дисконнект от игры
-                this.numberOfCommand = 150;
+                this.numberOfCommand = MessageCommand.C_S_LeftFromTheGame;
             }break;
-            case 151:{
+            case MessageCommand.S_C_HostLeftTheGame:{
                 // хостовый игрок отменил создание игры поэтому всем надо отключиться
-                this.numberOfCommand = 151;
+                this.numberOfCommand = MessageCommand.S_C_HostLeftTheGame;
             }break;
-            case 152:{
+            case MessageCommand.C_S_StopObserveTheGame:{
                 // отключаемся как наблюдатели
-                this.numberOfCommand = 152;
+                this.numberOfCommand = MessageCommand.C_S_StopObserveTheGame;
             }break;
-            case 203:{
-                this.numberOfCommand = 203;
+            case MessageCommand.S_C_EmptyListOfLobbyGames:{
+                this.numberOfCommand = MessageCommand.S_C_EmptyListOfLobbyGames;
             }break;
-            case 300:{
+            case MessageCommand.C_S_DisconnectFromServer:{
                 // сообщение серверу об отключении
-                this.numberOfCommand = 300;
+                this.numberOfCommand = MessageCommand.C_S_DisconnectFromServer;
             } break;
-            case 301:{
+            case MessageCommand.S_C_DisconnectFromServer:{
                 // сообщение от сервера об отключении
-                this.numberOfCommand = 301;
+                this.numberOfCommand = MessageCommand.S_C_DisconnectFromServer;
             } break;
-            case 302:{
+            case MessageCommand.S_C_SystemMessageStopTheThread:{
                 // служебное сообщение от сервера чтобы просто завершить поток
-                this.numberOfCommand = 302;
+                this.numberOfCommand = MessageCommand.S_C_SystemMessageStopTheThread;
             } break;
-            case 998:{
+            case MessageCommand.S_C_EmptyStat:{
                 // пустой список статистики
-                this.numberOfCommand = 998;
+                this.numberOfCommand = MessageCommand.S_C_EmptyStat;
             }break;
             default:{
-                this.numberOfCommand = 999;
+                this.numberOfCommand = MessageCommand.EmptyMessage;
                 isEmpty =true;
             }
         }
     }
     public Message(int numberOfCommand, ArrayList<String> list){
         switch (numberOfCommand){
-            case 201:
-                this.numberOfCommand = 201;
+            case MessageCommand.S_C_ListOfLobbyGame:
+                this.numberOfCommand = MessageCommand.S_C_ListOfLobbyGame;
                 this.listOfGame = list;
                 break;
-            case 202:
-                this.numberOfCommand = 202;
+            case MessageCommand.S_C_Statistic:
+                this.numberOfCommand = MessageCommand.S_C_Statistic;
                 this.statisticList = list;
                 break;
         }

@@ -29,7 +29,7 @@ public class ClientReceiver implements Runnable{
                     System.err.println("Получил от сервера: " + fromServer);
                     Message message = decoder.decodeString(fromServer);
                     if(!message.isEmpty()) {
-                        if (message.getNumberOfCommand() != 302)
+                        if (message.getNumberOfCommand() != MessageCommand.S_C_SystemMessageStopTheThread)
                             handler.handleMessageFromServer(message);               //если сообщение удачно расшифрованно - отправляем его клиенту (то есть геймеру) вызывая обработчик
                         else {
                             //handler.handleMessageFromServer(message);
@@ -43,7 +43,7 @@ public class ClientReceiver implements Runnable{
         } catch (IOException e) {
             //добавить обработку отваливания
             e.printStackTrace();
-            handler.handleMessageFromServer(new Message(301,"",""));
+            handler.handleMessageFromServer(new Message(MessageCommand.S_C_DisconnectFromServer,"",""));
         }
     }
 }

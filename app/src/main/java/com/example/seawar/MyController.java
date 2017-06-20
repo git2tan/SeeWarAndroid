@@ -91,12 +91,12 @@ public class MyController implements IController, Observer {
 
     @Override
     public void buttonRegistrationNewAccount(String login, String pass) {
-        sender.sendMessage(new Message(108, login, pass));
+        sender.sendMessage(new Message(MessageCommand.C_S_TryToRegisterNewLogin, login, pass));
     }
 
     @Override
     public void buttonSendHandler(String message) {
-        sender.sendMessage(new Message(105, model.getLogin(),message));
+        sender.sendMessage(new Message(MessageCommand.C_S_MessageToLobby, model.getLogin(),message));
     }
 
     @Override
@@ -105,7 +105,7 @@ public class MyController implements IController, Observer {
         if (model.getConnectionState() != IModel.ConnectionState.online ||
                 model.getConnectionState() != IModel.ConnectionState.isAuthorizedOnTheServer ||
                 login.equals(model.getLogin()))
-            sender.sendMessage(new Message(100, login, pass));
+            sender.sendMessage(new Message(MessageCommand.C_S_TryLogin, login, pass));
         else
         {
             model.setCurState(IModel.ModelState.mainMenuFrame);
@@ -116,62 +116,62 @@ public class MyController implements IController, Observer {
 
     @Override
     public void buttonJoinHandler() {
-        sender.sendMessage(new Message(103,"",""));
+        sender.sendMessage(new Message(MessageCommand.C_S_TryConnectToLobby,"",""));
     }
 
     @Override
     public void handleMessageFromServer(Message message) {
         switch (message.getNumberOfCommand()){
-            case 101:{
+            case MessageCommand.S_C_SuccessLogin:{
                 model.setLogin(message.getLogin());
                 model.setPassword(message.getPass());
                 model.setConnectionState(IModel.ConnectionState.isAuthorizedOnTheServer);
                 model.setCurState(IModel.ModelState.mainMenuFrame);
             } break;
-            case 102:{
+            case MessageCommand.S_C_InValidLogin:{
                 model.setConnectionState(IModel.ConnectionState.cantLogin);
             } break;
-            case 103:{
+            case MessageCommand.C_S_TryConnectToLobby:{
                 //пропускаю
             } break;
-            case 104:{
+            case MessageCommand.S_C_YouAllowConnectToLobby:{
                 model.setCurState(IModel.ModelState.lobbyFrame);
             } break;
-            case 105:{
+            case MessageCommand.C_S_MessageToLobby:{
                 //пропускаю такое сообщение гениртся клиентом и обрабатывается на сервере
             } break;
-            case 106:{
+            case MessageCommand.S_C_MessageToLobbyFromLogin:{
                 //сообщение в чат лобби от конкретного пользователя
                 model.addMessageToLobbyChat(new ChatMessage(message.getLogin(),message.getMessage()));
 
             } break;
-            case 107:{
+            case MessageCommand.S_C_MessageToLobbyFromServer:{
                 //служебное сообщение сервера в чат Лобби
                 model.addMessageToLobbyChat(new ChatMessage(message.getLogin(),message.getMessage()));
             } break;
-            case 108:{
+            case MessageCommand.C_S_TryToRegisterNewLogin:{
                 //пропускаем
             } break;
-            case 109:{
+            case MessageCommand.S_C_RegistrationSuccess:{
                 //Положительный ответ на запрос регистрации
                 model.setRegistrationState(IModel.RegistrationState.success);
             } break;
-            case 110:{
+            case MessageCommand.S_C_RegistrationNotSuccess:{
                 //отрицательный ответ на запрос регистрации
                 model.setRegistrationState(IModel.RegistrationState.forbidden);
             } break;
-            case 111:{
+            case MessageCommand.C_S_WantToCreateGame:{
                 // пропускаем так как это клиент генерирует такие сообщения
             } break;
-            case 112:{
+            case MessageCommand.S_C_AllowToCreateGame:{
                 //удалось создать игру
                 model.CreateGame();
                 model.setCurState(IModel.ModelState.createGameFrame);
             } break;
-            case 113:{
+            case MessageCommand.C_S_WantToConnectToGame:{
                 // пропускаем
             } break;
-            case 114:{
+            case MessageCommand.S_C_SuccessConnectToGame:{
                 // положительный ответ на запрос о подключении к игре
                 // так мы подключились то работаем от лица второго пользователя и для нас оппонент это первый пользователь
                 model.CreateGame();
@@ -180,22 +180,20 @@ public class MyController implements IController, Observer {
                 model.setOpponentReady(message.getGameInfo().isReady1);
                 model.setCurState(IModel.ModelState.connectToGameFrame);
             } break;
-            case 115:{
-                // TODO переделать!!!
+            case MessageCommand.S_C_NotAllowConnectToGame:{
                 //JOptionPane.showMessageDialog(mainFrame.getFrame(),"Не удалось подключиться к игре.");
             } break;
-            case 116:{
+            case MessageCommand.C_S_ArmLeftTheLobby:{
                 // пропускаем т.к. это мы генерируем такое сообщение
             }break;
-            case 117:{
+            case MessageCommand.S_C_ToHostGamer_NewGamerConnect:{
                 model.setOpponent(message.getLogin());
             } break;
-            case 118:{
+            case MessageCommand.S_C_RequesttoArmDisconnectFromLobby:{
                 //ответ на наш запрос прервать создание игры
                 model.setCurState(IModel.ModelState.lobbyFrame);
-                //TODO сделать уничтожение данных об игре...
             } break;
-            case 119:{
+            case MessageCommand.S_C_NewGameInfo:{
                 // сообщение что произошли изменения в игровых данных
                 GameInfo gameInfo = message.getGameInfo();
                 //если сообщение пишло нам как хосту
@@ -212,158 +210,158 @@ public class MyController implements IController, Observer {
 
                 }
             }break;
-            case 120:{
+            case MessageCommand.C_S_GamerReadyAndSendBoard:{
                 //пропускаем (это мы посылаем готовность и расстановку кораблей
             }break;
-            case 121:{
+            case MessageCommand.C_S_GamerNotReady:{
                 //пропускаем т.к. это мы посылаем что мы не готовы
             }break;
-            case 122:{
+            case MessageCommand.C_S_HostGamerStartTheGame:{
                 // сообщение от клиента о старте игры
             }break;
-            case 123:{
+            case MessageCommand.S_C_ToHostGamerStartTheGame:{
                 // пришел ответ на зпрос о старте игры что мы стартуем первым номером
                 model.setNowMyTurn(true);
                 model.setCurState(IModel.ModelState.inGameState);
 
             } break;
-            case 124:{
+            case MessageCommand.S_C_ToGamer2StartTheGame:{
                 // пришло указание от сервера что хостовый игрок начал игру
                 model.setNowMyTurn(false);
                 model.setCurState(IModel.ModelState.inGameState);
             }break;
-            case 125:{
+            case MessageCommand.S_C_AllowObserveTheGame:{
                 // пришло указание от сервера что игроки начали игру и мы должны начать наблюдать
             } break;
-            case 126:{
+            case MessageCommand.C_S_FireToCoord:{
                 // это мы сгенерировали
             } break;
-            case 127:{
+            case MessageCommand.S_C_YouHitToCoord:{
                 // ответ сервера попал по координатам (ход не переходит)
                 model.getGame().getOpponentGameBoard().shot(message.getCoordX(),message.getCoordY(),false);
                 model.setNotPrepareToShot();
                 model.setNowMyTurn(true);
                 model.setIsHit(true);
             } break;
-            case 128:{
+            case MessageCommand.S_C_YouMissToCoord:{
                 // ответ сервера по координатам ()() - пусто  (ход переходит к оппоненту)
                 model.getGame().getOpponentGameBoard().shot(message.getCoordX(),message.getCoordY(),true);
                 model.setNotPrepareToShot();
                 model.setNowMyTurn(false);
                 model.setIsMiss(true);
             } break;
-            case 129:{
+            case MessageCommand.S_C_OpponentHitToYou:{
                 // сообщение сервера что по игроку стрельнули и попали (не его ход)
                 model.getGame().getHimselfGameBoard().shot(message.getCoordX(),message.getCoordY());
                 model.setNotPrepareToShot();
                 model.setNowMyTurn(false);
                 model.setIsOpponentHit(true);
             } break;
-            case 130:{
+            case MessageCommand.S_C_OpponentMissToYou:{
                 // сообщение сервера что по игроку стрельнули и промазали (его ход)
                 model.getGame().getHimselfGameBoard().shot(message.getCoordX(),message.getCoordY());
                 //model.setNotPrepareToShot();
                 model.setNowMyTurn(true);
                 model.setIsOpponentMiss(true);
             } break;
-            case 131:{
+            case MessageCommand.S_C_YouDestroyTheShipByCoord:{
                 // сообщение сервера что по указанным координатам "потопили" корабль (на вражеской доске)
                 System.err.println("Мы потопили корабль по координатам " + message.getCoordX() + " : " + message.getCoordY());
                 model.destroyOpponentShip(message.getCoordX(), message.getCoordY());
             } break;
-            case 132:{
+            case MessageCommand.S_C_YourShipByCoordIsDestroyed:{
                 // сообщение сервера что по указанным координатам нам потопили корабль (на нашей доске)
                 System.err.println("Нам потопили корабль по координатам " + message.getCoordX() + " : " + message.getCoordY());
                 model.destroyHimselfShip(message.getCoordX(), message.getCoordY());
             } break;
-            case 133:{
+            case MessageCommand.S_C_YouWin:{
                 // уведомление о выигрыше
                 model.setIsWinner();
             } break;
-            case 134:{
+            case MessageCommand.S_C_YouLose:{
                 // уведомление о проигрыше
                 model.setIsLoser();
             } break;
-            case 135:{
+            case MessageCommand.C_S_NeedStatisticFromNumber:{
                 //
             } break;
-            case 136:{
+            case MessageCommand.S_C_ShowStatActivity:{
                 model.setCurState(IModel.ModelState.statisticFrame);
             } break;
-            case 137:{
+            case MessageCommand.C_S_NeedRefreshStatistic:{
                 sender.sendMessage(message);
             } break;
-            case 138:{
+            case MessageCommand.C_S_MessageToLobbyFromlogin:{
                 sender.sendMessage(message);
             } break;
-            case 139:{
+            case MessageCommand.S_C_MessageToLobbyFromlogin:{
                 model.addMessageToGameChat(new ChatMessage(message.getLogin(), message.getMessage()));
             } break;
-            case 140:{
+            case MessageCommand.S_C_MessageToLobbyAboutCoonect:{
                 model.addMessageToGameChat(new ChatMessage(message.getLogin(), message.getMessage()));
             } break;
-            case 141:{
+            case MessageCommand.C_S_WantToObserverToGame:{
                 sender.sendMessage(message);
             } break;
-            case 142:{
+            case MessageCommand.S_C_ShowObserverActivity:{
                 model.CreateObservableGame(message.getGameInfo());
                 model.setCurState(IModel.ModelState.observerFrame);
             } break;
-            case 143:{
+            case MessageCommand.S_C_LoginFireToCoordAndHit:{
                 model.handleHitShotObs(message.getLogin(),message.getCoordX(),message.getCoordY());
             } break;
-            case 144:{
+            case MessageCommand.S_C_ToObs_LoginFireToCoordAndMiss:{
                 model.handleMissShotObs(message.getLogin(),message.getCoordX(),message.getCoordY());
             } break;
-            case 145:{
+            case MessageCommand.S_C_ToObs_LoginDestroyShipByCoord:{
                 model.handleDestroyShipObs(message.getLogin(),message.getCoordX(),message.getCoordY());
             } break;
-            case 146:{
+            case MessageCommand.S_C_ToObs_LoginWin:{
                 model.handleWinsObs(message.getLogin());
             } break;
-            case 147:{
+            case MessageCommand.S_C_ToObs_ActualGameInfo:{
                 // пришло актуальное состояние досок игроков для обсервера
                 model.actualizeGameBoardsForObs(message.getBoard(), message.getBoard2());
             } break;
-            case 148:{
+            case MessageCommand.C_S_GamerWantToLose:{
                 sender.sendMessage(message);
             } break;
-            case 149:{
+            case MessageCommand.C_S_WantStatAboutlogin:{
                 sender.sendMessage(message);    // запрос статистики по логину (генерим на соотв кнопке)
             } break;
-            case 150:{
+            case MessageCommand.C_S_LeftFromTheGame:{
                 sender.sendMessage(message);    // сообщение о желании отключиться в момент создания игры
             } break;
-            case 151:{
+            case MessageCommand.S_C_HostLeftTheGame:{
                 // пришло уведомление что нам надо отключиться от игры (т.к. мы или OBS или игрок)
                 if (model.getCurrentState() == IModel.ModelState.connectToGameFrame || model.getCurrentState() == IModel.ModelState.observerFrame){
                     model.setCurState(IModel.ModelState.mainMenuFrame);
                 }
             } break;
-            case 201:{
+            case MessageCommand.S_C_ListOfLobbyGame:{
                 // пришел список игр от сервера
                 model.setListOFServersGames(parseServerGames(message));
             } break;
-            case 202:{
+            case MessageCommand.S_C_Statistic:{
                 // пришла статистика по играм
                 model.setStatisticList(message.getStatisticList());
                 model.setOffsetForStats(offset);
             } break;
-            case 203:{
+            case MessageCommand.S_C_EmptyListOfLobbyGames:{
                 // пришел пустой список игр
                 ArrayList<ServerGame> emptyList = new ArrayList<ServerGame>();
                 model.setListOFServersGames(emptyList);
             } break;
-            case 301:{
+            case MessageCommand.S_C_DisconnectFromServer:{
                 // по каким-то причинам мы отключились
                 System.err.println("Обработал отключение");
                 sender = null;  // переделать
                 model.resetData();
             }break;
-            case 302:{
+            case MessageCommand.S_C_SystemMessageStopTheThread:{
 
             }break;
-            case 998:{
+            case MessageCommand.S_C_EmptyStat:{
                 // пришел пустой список статистики
             }break;
         }
@@ -371,7 +369,7 @@ public class MyController implements IController, Observer {
 
     @Override
     public void buttonCreateGameHandler() {
-        sender.sendMessage(new Message(111,"",""));
+        sender.sendMessage(new Message(MessageCommand.C_S_WantToCreateGame,"",""));
     }
 
     @Override
@@ -381,7 +379,7 @@ public class MyController implements IController, Observer {
             game = model.getListOFServersGames().get(indx);
 
         if (game != null)
-            sender.sendMessage(new Message(113,"" + game.getId(),""));
+            sender.sendMessage(new Message(MessageCommand.C_S_WantToConnectToGame,"" + game.getId(),""));
     }
 
     @Override
@@ -391,7 +389,7 @@ public class MyController implements IController, Observer {
             game = model.getListOFServersGames().get(indx);
 
         if (game != null)
-            sender.sendMessage(new Message(141, "" + game.getId(), ""));
+            sender.sendMessage(new Message(MessageCommand.C_S_WantToObserverToGame, "" + game.getId(), ""));
     }
 
     @Override
@@ -421,7 +419,7 @@ public class MyController implements IController, Observer {
     @Override
     public void cancelCreateGameButton() {
         if (model.getConnectionState() != IModel.ConnectionState.offline && sender != null)
-            sender.sendMessage(new Message(150,"",""));
+            sender.sendMessage(new Message(MessageCommand.C_S_LeftFromTheGame,"",""));
     }
 
     @Override
@@ -446,16 +444,16 @@ public class MyController implements IController, Observer {
     public void checkBoxIsReadyHandler(boolean flag) {
         if (flag){
             // посылаем на сервер сообщение с расположением кораблей
-            sender.sendMessage(new Message(120,model.getGame().getHimselfGameBoard().toString(),""));
+            sender.sendMessage(new Message(MessageCommand.C_S_GamerReadyAndSendBoard,model.getGame().getHimselfGameBoard().toString(),""));
         }
         else{
-            sender.sendMessage(new Message(121,"",""));
+            sender.sendMessage(new Message(MessageCommand.C_S_GamerNotReady,"",""));
         }
     }
 
     @Override
     public void startGameButtonHandler() {
-        sender.sendMessage(new Message(122, "",""));
+        sender.sendMessage(new Message(MessageCommand.C_S_HostGamerStartTheGame, "",""));
     }
 
     @Override
@@ -481,7 +479,7 @@ public class MyController implements IController, Observer {
         {
             model.setNowMyTurn(false);
             model.setNotPrepareToShot();
-            sender.sendMessage(new Message(126, "" + model.getCoordX(), "" + model.getCoordY()));
+            sender.sendMessage(new Message(MessageCommand.C_S_FireToCoord, "" + model.getCoordX(), "" + model.getCoordY()));
         }
     }
 
@@ -517,7 +515,7 @@ public class MyController implements IController, Observer {
 
     @Override
     public void showStatiscticHandler() {
-        sender.sendMessage(new Message(135,"",""));
+        sender.sendMessage(new Message(MessageCommand.C_S_NeedStatisticFromNumber,"",""));
     }
 
     @Override
@@ -526,7 +524,7 @@ public class MyController implements IController, Observer {
             if(this.offset != -1)
                 prevOffset = this.offset;
 
-            sender.sendMessage(new Message(137, "" + offset, ""));
+            sender.sendMessage(new Message(MessageCommand.C_S_NeedRefreshStatistic, "" + offset, ""));
             this.offset = offset;
         }
     }
@@ -534,13 +532,13 @@ public class MyController implements IController, Observer {
     @Override
     public void disconnect() {
         if (model.getConnectionState() != IModel.ConnectionState.offline && sender != null)
-            sender.sendMessage(new Message(300, "", ""));
+            sender.sendMessage(new Message(MessageCommand.C_S_DisconnectFromServer, "", ""));
         model.resetData();
     }
 
     @Override
     public void buttonSendMessageToGameChat(String message) {
-        sender.sendMessage(new Message(138, model.getLogin(),message));
+        sender.sendMessage(new Message(MessageCommand.C_S_MessageToLobbyFromlogin, model.getLogin(),message));
     }
 
     @Override
@@ -555,30 +553,30 @@ public class MyController implements IController, Observer {
 
     @Override
     public void surrenderButtonHandle() {
-        sender.sendMessage(new Message(148,"",""));
+        sender.sendMessage(new Message(MessageCommand.C_S_GamerWantToLose,"",""));
     }
 
     @Override
     public void showMyStatsHandler(boolean isNowMyStatTurn) {
         if (isNowMyStatTurn) {
 
-            sender.sendMessage(new Message(149, model.getLogin(), ""));
+            sender.sendMessage(new Message(MessageCommand.C_S_WantStatAboutlogin, model.getLogin(), ""));
             if (prevOffset < offset)
                 offset = prevOffset;
         }
         else {
-            sender.sendMessage(new Message(137, "" + offset, ""));
+            sender.sendMessage(new Message(MessageCommand.C_S_NeedRefreshStatistic, "" + offset, ""));
         }
     }
 
     @Override
     public void stopObservGameHandler() {
-        sender.sendMessage(new Message(152,"",""));
+        sender.sendMessage(new Message(MessageCommand.C_S_StopObserveTheGame,"",""));
     }
 
     @Override
     public void disconnectFromLobby() {
         if (sender != null)
-            sender.sendMessage(new Message(116,"",""));
+            sender.sendMessage(new Message(MessageCommand.C_S_ArmLeftTheLobby,"",""));
     }
 }

@@ -100,227 +100,227 @@ public class Decoder {
         int number = Integer.parseInt(s);
         Message tmp;
         switch (number){
-            case 100:{
+            case MessageCommand.C_S_TryLogin:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 int passwordLength = Integer.parseInt(input.substring(5,7));
                 String login = input.substring(7,7+loginLength);
                 String password = input.substring(7+loginLength,7+loginLength+passwordLength);
-                tmp = new Message(100,login,password);
+                tmp = new Message(MessageCommand.C_S_TryLogin,login,password);
             } break;
-            case 101:{
+            case MessageCommand.S_C_SuccessLogin:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 int passwordLength = Integer.parseInt(input.substring(5,7));
                 String login = input.substring(7,7+loginLength);
                 String password = input.substring(7+loginLength,7+loginLength+passwordLength);
-                tmp = new Message(101,login,password);
+                tmp = new Message(MessageCommand.S_C_SuccessLogin,login,password);
             } break;
-            case 102:{
-                tmp = new Message(102,"","");
+            case MessageCommand.S_C_InValidLogin:{
+                tmp = new Message(MessageCommand.S_C_InValidLogin,"","");
             } break;
-            case 103:{
-                tmp = new Message(103,"","");
+            case MessageCommand.C_S_TryConnectToLobby:{
+                tmp = new Message(MessageCommand.C_S_TryConnectToLobby,"","");
             } break;
-            case 104:{
-                tmp = new Message(104,"","");
+            case MessageCommand.S_C_YouAllowConnectToLobby:{
+                tmp = new Message(MessageCommand.S_C_YouAllowConnectToLobby,"","");
             } break;
-            case 105:{
+            case MessageCommand.C_S_MessageToLobby:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 String login = input.substring(5,5+loginLength);
                 String message = input.substring(5+loginLength);
-                tmp = new Message(105,login,message);
+                tmp = new Message(MessageCommand.C_S_MessageToLobby,login,message);
             } break;
-            case 106:{
+            case MessageCommand.S_C_MessageToLobbyFromLogin:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 String login = input.substring(5,5+loginLength);
                 String message = input.substring(5+loginLength);
-                tmp = new Message(106,login,message);
+                tmp = new Message(MessageCommand.S_C_MessageToLobbyFromLogin,login,message);
             } break;
-            case 107:{
+            case MessageCommand.S_C_MessageToLobbyFromServer:{
                 String message = input.substring(3);
-                tmp = new Message(107,message,"");
+                tmp = new Message(MessageCommand.S_C_MessageToLobbyFromServer,message,"");
             } break;
-            case 108:{
+            case MessageCommand.C_S_TryToRegisterNewLogin:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 int passwordLength = Integer.parseInt(input.substring(5,7));
                 String login = input.substring(7,7+loginLength);
                 String password = input.substring(7+loginLength,7+loginLength+passwordLength);
-                tmp = new Message(108,login,password);
+                tmp = new Message(MessageCommand.C_S_TryToRegisterNewLogin,login,password);
             } break;
-            case 109:{
+            case MessageCommand.S_C_RegistrationSuccess:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 int passwordLength = Integer.parseInt(input.substring(5,7));
                 String login = input.substring(7,7+loginLength);
                 String password = input.substring(7+loginLength,7+loginLength+passwordLength);
-                tmp = new Message(109,login,password);
+                tmp = new Message(MessageCommand.S_C_RegistrationSuccess,login,password);
             } break;
-            case 110:{
-                tmp = new Message(110,"","");
+            case MessageCommand.S_C_RegistrationNotSuccess:{
+                tmp = new Message(MessageCommand.S_C_RegistrationNotSuccess,"","");
             } break;
-            case 111:{
-                tmp = new Message(111, "", "");
+            case MessageCommand.C_S_WantToCreateGame:{
+                tmp = new Message(MessageCommand.C_S_WantToCreateGame, "", "");
             } break;
-            case 112:{
-                tmp = new Message(112,"","");
+            case MessageCommand.S_C_AllowToCreateGame:{
+                tmp = new Message(MessageCommand.S_C_AllowToCreateGame,"","");
             } break;
-            case 113:{
+            case MessageCommand.C_S_WantToConnectToGame:{
                 int id = Integer.parseInt(input.substring(3));
-                tmp = new Message(113, "" + id,"");
+                tmp = new Message(MessageCommand.C_S_WantToConnectToGame, "" + id,"");
             } break;
-            case 114:{
-                tmp = new Message(114, input.substring(3),"");
+            case MessageCommand.S_C_SuccessConnectToGame:{
+                tmp = new Message(MessageCommand.S_C_SuccessConnectToGame, input.substring(3),"");
             } break;
-            case 115:{
-                tmp = new Message(115,"","");
+            case MessageCommand.S_C_NotAllowConnectToGame:{
+                tmp = new Message(MessageCommand.S_C_NotAllowConnectToGame,"","");
             }break;
-            case 116:{
-                tmp = new Message(116,"","");
+            case MessageCommand.C_S_ArmLeftTheLobby:{
+                tmp = new Message(MessageCommand.C_S_ArmLeftTheLobby,"","");
             }break;
-            case 117:{
+            case MessageCommand.S_C_ToHostGamer_NewGamerConnect:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 String login = input.substring(5,5+loginLength);
-                tmp = new Message(117,login,"");
+                tmp = new Message(MessageCommand.S_C_ToHostGamer_NewGamerConnect,login,"");
             }break;
-            case 118:{
-                tmp = new Message(118,"","");
+            case MessageCommand.S_C_RequesttoArmDisconnectFromLobby:{
+                tmp = new Message(MessageCommand.S_C_RequesttoArmDisconnectFromLobby,"","");
             } break;
-            case 119:{
-                tmp = new Message(119, input.substring(3),"");
+            case MessageCommand.S_C_NewGameInfo:{
+                tmp = new Message(MessageCommand.S_C_NewGameInfo, input.substring(3),"");
             } break;
-            case 120:{
-                tmp = new Message(120, input.substring(3),"");
+            case MessageCommand.C_S_GamerReadyAndSendBoard:{
+                tmp = new Message(MessageCommand.C_S_GamerReadyAndSendBoard, input.substring(3),"");
             } break;
-            case 121:{
-                tmp = new Message(121,"","");
+            case MessageCommand.C_S_GamerNotReady:{
+                tmp = new Message(MessageCommand.C_S_GamerNotReady,"","");
             } break;
-            case 122:{
-                tmp = new Message(122,"","");
+            case MessageCommand.C_S_HostGamerStartTheGame:{
+                tmp = new Message(MessageCommand.C_S_HostGamerStartTheGame,"","");
             } break;
-            case 123:{
-                tmp = new Message(123,"","");
+            case MessageCommand.S_C_ToHostGamerStartTheGame:{
+                tmp = new Message(MessageCommand.S_C_ToHostGamerStartTheGame,"","");
             } break;
-            case 124:{
-                tmp = new Message(124, "","");
+            case MessageCommand.S_C_ToGamer2StartTheGame:{
+                tmp = new Message(MessageCommand.S_C_ToGamer2StartTheGame, "","");
             } break;
-            case 125:{
-                tmp = new Message(125, "","");
+            case MessageCommand.S_C_AllowObserveTheGame:{
+                tmp = new Message(MessageCommand.S_C_AllowObserveTheGame, "","");
             } break;
-            case 126:{
-                tmp = new Message(126, input.substring(3,4), input.substring(4,5));
+            case MessageCommand.C_S_FireToCoord:{
+                tmp = new Message(MessageCommand.C_S_FireToCoord, input.substring(3,4), input.substring(4,5));
             } break;
-            case 127:{
-                tmp = new Message(127, input.substring(3,4), input.substring(4,5));
+            case MessageCommand.S_C_YouHitToCoord:{
+                tmp = new Message(MessageCommand.S_C_YouHitToCoord, input.substring(3,4), input.substring(4,5));
             } break;
-            case 128:{
-                tmp = new Message(128, input.substring(3,4), input.substring(4,5));
+            case MessageCommand.S_C_YouMissToCoord:{
+                tmp = new Message(MessageCommand.S_C_YouMissToCoord, input.substring(3,4), input.substring(4,5));
             } break;
-            case 129:{
-                tmp = new Message(129, input.substring(3,4), input.substring(4,5));
+            case MessageCommand.S_C_OpponentHitToYou:{
+                tmp = new Message(MessageCommand.S_C_OpponentHitToYou, input.substring(3,4), input.substring(4,5));
             } break;
-            case 130:{
-                tmp = new Message(130, input.substring(3,4), input.substring(4,5));
+            case MessageCommand.S_C_OpponentMissToYou:{
+                tmp = new Message(MessageCommand.S_C_OpponentMissToYou, input.substring(3,4), input.substring(4,5));
             } break;
-            case 131:{
-                tmp = new Message(131, input.substring(3,4), input.substring(4,5));
+            case MessageCommand.S_C_YouDestroyTheShipByCoord:{
+                tmp = new Message(MessageCommand.S_C_YouDestroyTheShipByCoord, input.substring(3,4), input.substring(4,5));
             }break;
-            case 132:{
-                tmp = new Message(132, input.substring(3,4), input.substring(4,5));
+            case MessageCommand.S_C_YourShipByCoordIsDestroyed:{
+                tmp = new Message(MessageCommand.S_C_YourShipByCoordIsDestroyed, input.substring(3,4), input.substring(4,5));
             }break;
-            case 133:{
-                tmp = new Message(133, "","");
+            case MessageCommand.S_C_YouWin:{
+                tmp = new Message(MessageCommand.S_C_YouWin, "","");
             }break;
-            case 134:{
-                tmp = new Message(134, "","");
+            case MessageCommand.S_C_YouLose:{
+                tmp = new Message(MessageCommand.S_C_YouLose, "","");
             }break;
-            case 135:{
-                tmp = new Message(135, "","");
+            case MessageCommand.C_S_NeedStatisticFromNumber:{
+                tmp = new Message(MessageCommand.C_S_NeedStatisticFromNumber, "","");
             }break;
-            case 136:{
-                tmp = new Message(136,"","");
+            case MessageCommand.S_C_ShowStatActivity:{
+                tmp = new Message(MessageCommand.S_C_ShowStatActivity,"","");
             }break;
-            case 137:{
-                tmp = new Message(137, input.substring(3),"");
+            case MessageCommand.C_S_NeedRefreshStatistic:{
+                tmp = new Message(MessageCommand.C_S_NeedRefreshStatistic, input.substring(3),"");
             }break;
-            case 138:{
-                int loginLength = Integer.parseInt(input.substring(3,5));
-                String login = input.substring(5,5+loginLength);
-                String message = input.substring(5+loginLength);
-                tmp = new Message(138,login,message);
-            }break;
-            case 139:{
+            case MessageCommand.C_S_MessageToLobbyFromlogin:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 String login = input.substring(5,5+loginLength);
                 String message = input.substring(5+loginLength);
-                tmp = new Message(139, login, message);
+                tmp = new Message(MessageCommand.C_S_MessageToLobbyFromlogin,login,message);
             }break;
-            case 140:{
+            case MessageCommand.S_C_MessageToLobbyFromlogin:{
+                int loginLength = Integer.parseInt(input.substring(3,5));
+                String login = input.substring(5,5+loginLength);
+                String message = input.substring(5+loginLength);
+                tmp = new Message(MessageCommand.S_C_MessageToLobbyFromlogin, login, message);
+            }break;
+            case MessageCommand.S_C_MessageToLobbyAboutCoonect:{
                 String message = input.substring(3);
-                tmp = new Message(140,message,"");
+                tmp = new Message(MessageCommand.S_C_MessageToLobbyAboutCoonect,message,"");
             }break;
-            case 141:{
+            case MessageCommand.C_S_WantToObserverToGame:{
                 int id = Integer.parseInt(input.substring(3));
-                tmp = new Message(141, "" + id,"");
+                tmp = new Message(MessageCommand.C_S_WantToObserverToGame, "" + id,"");
             }break;
-            case 142:{
-                tmp = new Message(142, input.substring(3), "");
+            case MessageCommand.S_C_ShowObserverActivity:{
+                tmp = new Message(MessageCommand.S_C_ShowObserverActivity, input.substring(3), "");
             }break;
-            case 143:{
+            case MessageCommand.S_C_LoginFireToCoordAndHit:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 String login = input.substring(5, 5+loginLength);
-                tmp = new Message(143, login, input.substring(5+loginLength));
+                tmp = new Message(MessageCommand.S_C_LoginFireToCoordAndHit, login, input.substring(5+loginLength));
             }break;
-            case 144:{
+            case MessageCommand.S_C_ToObs_LoginFireToCoordAndMiss:{
                 int loginLength = Integer.parseInt(input.substring(3, 5));
                 String login = input.substring(5, 5+loginLength);
-                tmp = new Message(144, login, input.substring(5+loginLength));
+                tmp = new Message(MessageCommand.S_C_ToObs_LoginFireToCoordAndMiss, login, input.substring(5+loginLength));
             }break;
-            case 145:{
+            case MessageCommand.S_C_ToObs_LoginDestroyShipByCoord:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 String login = input.substring(5, 5+loginLength);
-                tmp = new Message(145, login, input.substring(5+loginLength));
+                tmp = new Message(MessageCommand.S_C_ToObs_LoginDestroyShipByCoord, login, input.substring(5+loginLength));
             }break;
-            case 146:{
-                tmp = new Message(146, input.substring(3), "");
+            case MessageCommand.S_C_ToObs_LoginWin:{
+                tmp = new Message(MessageCommand.S_C_ToObs_LoginWin, input.substring(3), "");
             }break;
-            case 147:{
-                tmp = new Message(147, input.substring(3,103), input.substring(103,203));
+            case MessageCommand.S_C_ToObs_ActualGameInfo:{
+                tmp = new Message(MessageCommand.S_C_ToObs_ActualGameInfo, input.substring(3,103), input.substring(103,203));
             }break;
-            case 148:{
-                tmp = new Message (148, "", "");
+            case MessageCommand.C_S_GamerWantToLose:{
+                tmp = new Message (MessageCommand.C_S_GamerWantToLose, "", "");
             }break;
-            case 149:{
+            case MessageCommand.C_S_WantStatAboutlogin:{
                 int loginLength = Integer.parseInt(input.substring(3,5));
                 String login = input.substring(5,5+loginLength);
-                tmp = new Message(149, login, input.substring(5+loginLength));
+                tmp = new Message(MessageCommand.C_S_WantStatAboutlogin, login, input.substring(5+loginLength));
             }break;
-            case 150:{
-                tmp = new Message(150,"","");
+            case MessageCommand.C_S_LeftFromTheGame:{
+                tmp = new Message(MessageCommand.C_S_LeftFromTheGame,"","");
             }break;
-            case 151:{
-                tmp = new Message(151,"","");
+            case MessageCommand.S_C_HostLeftTheGame:{
+                tmp = new Message(MessageCommand.S_C_HostLeftTheGame,"","");
             }break;
-            case 152:{
-                tmp = new Message(152,"","");
+            case MessageCommand.C_S_StopObserveTheGame:{
+                tmp = new Message(MessageCommand.C_S_StopObserveTheGame,"","");
             }break;
-            case 201:{
+            case MessageCommand.S_C_ListOfLobbyGame:{
                 tmp = toMessageStringWithGames(input);
             } break;
-            case 202:{
+            case MessageCommand.S_C_Statistic:{
                 tmp = toMessageStringWithStatistic(input);
             }break;
-            case 203:{
-                tmp = new Message(203,"","");
+            case MessageCommand.S_C_EmptyListOfLobbyGames:{
+                tmp = new Message(MessageCommand.S_C_EmptyListOfLobbyGames,"","");
             }break;
-            case 300:{
-                tmp = new Message(300, "", "");
+            case MessageCommand.C_S_DisconnectFromServer:{
+                tmp = new Message(MessageCommand.C_S_DisconnectFromServer, "", "");
             }break;
-            case 301:{
-                tmp = new Message(301, "", "");
+            case MessageCommand.S_C_DisconnectFromServer:{
+                tmp = new Message(MessageCommand.S_C_DisconnectFromServer, "", "");
             }break;
-            case 302:{
-                tmp = new Message(302, "", "");
+            case MessageCommand.S_C_SystemMessageStopTheThread:{
+                tmp = new Message(MessageCommand.S_C_SystemMessageStopTheThread, "", "");
             }break;
-            case 998:{
-                tmp = new Message(998,"","");
+            case MessageCommand.S_C_EmptyStat:{
+                tmp = new Message(MessageCommand.S_C_EmptyStat,"","");
             }break;
             default:{
                 tmp = new Message();
@@ -334,261 +334,258 @@ public class Decoder {
         String textMessage ="";
         if(!message.isEmpty()){
             switch (message.getNumberOfCommand()){
-                case 100:{
-                    textMessage += "100";
+                case MessageCommand.C_S_TryLogin:{
+                    textMessage += Integer.toString(MessageCommand.C_S_TryLogin);
                     textMessage += message.getLoginLength();
                     textMessage += message.getPassLength();
                     textMessage += message.getLogin();
                     textMessage += message.getPass();
                 }break;
-                case 101:{
-                    textMessage += "101";
+                case MessageCommand.S_C_SuccessLogin:{
+                    textMessage += Integer.toString(MessageCommand.S_C_SuccessLogin);
                     textMessage += message.getLoginLength();
                     textMessage += message.getPassLength();
                     textMessage += message.getLogin();
                     textMessage += message.getPass();
                 }break;
-                case 102:{
-                    textMessage += "102";
+                case MessageCommand.S_C_InValidLogin:{
+                    textMessage += Integer.toString(MessageCommand.S_C_InValidLogin);
                 }break;
-                case 103:{
-                    textMessage += "103";
+                case MessageCommand.C_S_TryConnectToLobby:{
+                    textMessage += Integer.toString(MessageCommand.C_S_TryConnectToLobby);
                 }break;
-                case 104:{
-                    textMessage += "104";
+                case MessageCommand.S_C_YouAllowConnectToLobby:{
+                    textMessage += Integer.toString(MessageCommand.S_C_YouAllowConnectToLobby);
                 }break;
-                case 105:{
-                    textMessage += "105";
+                case MessageCommand.C_S_MessageToLobby:{
+                    textMessage += Integer.toString(MessageCommand.C_S_MessageToLobby);
                     textMessage += message.getLoginLength();
                     textMessage += message.getLogin();
                     textMessage += message.getMessage();
                 }break;
-                case 106:{
-                    textMessage += "106";
+                case MessageCommand.S_C_MessageToLobbyFromLogin:{
+                    textMessage += Integer.toString(MessageCommand.S_C_MessageToLobbyFromLogin);
                     textMessage += message.getLoginLength();
                     textMessage += message.getLogin();
-                    textMessage += message.getMessage();
-                } break;
-                case 107:{
-                    textMessage += "107";
                     textMessage += message.getMessage();
                 } break;
-                case 108:{
-                    textMessage += "108";
+                case MessageCommand.S_C_MessageToLobbyFromServer:{
+                    textMessage += Integer.toString(MessageCommand.S_C_MessageToLobbyFromServer);
+                    textMessage += message.getMessage();
+                } break;
+                case MessageCommand.C_S_TryToRegisterNewLogin:{
+                    textMessage += Integer.toString(MessageCommand.C_S_TryToRegisterNewLogin);
                     textMessage += message.getLoginLength();
                     textMessage += message.getPassLength();
                     textMessage += message.getLogin();
                     textMessage += message.getPass();
                 }break;
-                case 109:{
-                    textMessage += "109";
+                case MessageCommand.S_C_RegistrationSuccess:{
+                    textMessage += Integer.toString(MessageCommand.S_C_RegistrationSuccess);
                     textMessage += message.getLoginLength();
                     textMessage += message.getPassLength();
                     textMessage += message.getLogin();
                     textMessage += message.getPass();
                 }break;
-                case 110:{
-                    textMessage += "110";
+                case MessageCommand.S_C_RegistrationNotSuccess:{
+                    textMessage += Integer.toString(MessageCommand.S_C_RegistrationNotSuccess);
                 }break;
-                case 111:{
-                    textMessage += "111";
+                case MessageCommand.C_S_WantToCreateGame:{
+                    textMessage += Integer.toString(MessageCommand.C_S_WantToCreateGame);
                 }break;
-                case 112:{
-                    textMessage += "112";
+                case MessageCommand.S_C_AllowToCreateGame:{
+                    textMessage += Integer.toString(MessageCommand.S_C_AllowToCreateGame);
                 }break;
-                case 113:{
-                    textMessage += "113";
+                case MessageCommand.C_S_WantToConnectToGame:{
+                    textMessage += Integer.toString(MessageCommand.C_S_WantToConnectToGame);
                     textMessage += message.getGameID();
                 }break;
-                case 114:{
-                    textMessage += "114";
+                case MessageCommand.S_C_SuccessConnectToGame:{
+                    textMessage += Integer.toString(MessageCommand.S_C_SuccessConnectToGame);
                     textMessage += message.getGameInfo().toString();
                 }break;
-                case 115:{
-                    textMessage += "115";
+                case MessageCommand.S_C_NotAllowConnectToGame:{
+                    textMessage += Integer.toString(MessageCommand.S_C_NotAllowConnectToGame);
                 }break;
-                case 116:{
-                    textMessage += "116";
+                case MessageCommand.C_S_ArmLeftTheLobby:{
+                    textMessage += Integer.toString(MessageCommand.C_S_ArmLeftTheLobby);
                 }break;
-                case 117:{
-                    textMessage += "117";
+                case MessageCommand.S_C_ToHostGamer_NewGamerConnect:{
+                    textMessage += Integer.toString(MessageCommand.S_C_ToHostGamer_NewGamerConnect);
                     textMessage += message.getLoginLength();
                     textMessage += message.getLogin();
                 }break;
-                case 118:{
-                    textMessage += "118";
+                case MessageCommand.S_C_RequesttoArmDisconnectFromLobby:{
+                    textMessage += Integer.toString(MessageCommand.S_C_RequesttoArmDisconnectFromLobby);
                 }break;
-                case 119:{
-                    textMessage += "119";
+                case MessageCommand.S_C_NewGameInfo:{
+                    textMessage += Integer.toString(MessageCommand.S_C_NewGameInfo);
                     textMessage += message.getGameInfo().toString();
                 }break;
-                case 120:{
-                    textMessage += "120";
+                case MessageCommand.C_S_GamerReadyAndSendBoard:{
+                    textMessage += Integer.toString(MessageCommand.C_S_GamerReadyAndSendBoard);
                     textMessage += Decoder.ArrayToString(message.getBoard());
                 }break;
-                case 121:{
-                    textMessage += "121";
+                case MessageCommand.C_S_GamerNotReady:{
+                    textMessage += Integer.toString(MessageCommand.C_S_GamerNotReady);
                 }break;
-                case 122:{
-                    textMessage += "122";
+                case MessageCommand.C_S_HostGamerStartTheGame:{
+                    textMessage += Integer.toString(MessageCommand.C_S_HostGamerStartTheGame);
                 } break;
-                case 123:{
-                    textMessage += "123";
+                case MessageCommand.S_C_ToHostGamerStartTheGame:{
+                    textMessage += Integer.toString(MessageCommand.S_C_ToHostGamerStartTheGame);
                 } break;
-                case 124:{
-                    textMessage += "124";
+                case MessageCommand.S_C_ToGamer2StartTheGame:{
+                    textMessage += Integer.toString(MessageCommand.S_C_ToGamer2StartTheGame);
                 } break;
-                case 125:{
-                    textMessage += "125";
+                case MessageCommand.S_C_AllowObserveTheGame:{
+                    textMessage += Integer.toString(MessageCommand.S_C_AllowObserveTheGame);
                 } break;
-                case 126:{
-                    textMessage += "126";
+                case MessageCommand.C_S_FireToCoord:{
+                    textMessage += Integer.toString(MessageCommand.C_S_FireToCoord);
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 } break;
-                case 127:{
-                    textMessage += "127";
+                case MessageCommand.S_C_YouHitToCoord:{
+                    textMessage += Integer.toString(MessageCommand.S_C_YouHitToCoord);
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 } break;
-                case 128:{
-                    textMessage += "128";
+                case MessageCommand.S_C_YouMissToCoord:{
+                    textMessage += Integer.toString(MessageCommand.S_C_YouMissToCoord);
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 } break;
-                case 129:{
-                    textMessage += "129";
+                case MessageCommand.S_C_OpponentHitToYou:{
+                    textMessage += Integer.toString(MessageCommand.S_C_OpponentHitToYou);
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 } break;
-                case 130:{
-                    textMessage += "130";
+                case MessageCommand.S_C_OpponentMissToYou:{
+                    textMessage += Integer.toString(MessageCommand.S_C_OpponentMissToYou);
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 } break;
-                case 131:{
+                case MessageCommand.S_C_YouDestroyTheShipByCoord:{
                     // ответ сервера что по указанным координатам "потопили" корабль
-                    textMessage += "131";
+                    textMessage += Integer.toString(MessageCommand.S_C_YouDestroyTheShipByCoord);
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 } break;
-                case 132:{
+                case MessageCommand.S_C_YourShipByCoordIsDestroyed:{
                     // уведомление сервера что ваш корабль содержащий такие координаты потоплен
-                    textMessage += "132";
+                    textMessage += Integer.toString(MessageCommand.S_C_YourShipByCoordIsDestroyed);
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 } break;
-                case 133:{
-                    textMessage += "133";
+                case MessageCommand.S_C_YouWin:{
+                    textMessage += Integer.toString(MessageCommand.S_C_YouWin);
                 }break;
-                case 134:{
-                    textMessage += "134";
+                case MessageCommand.S_C_YouLose:{
+                    textMessage += Integer.toString(MessageCommand.S_C_YouLose);
                 }break;
-                case 135:{
-                    textMessage += "135";
+                case MessageCommand.C_S_NeedStatisticFromNumber:{
+                    textMessage += Integer.toString(MessageCommand.C_S_NeedStatisticFromNumber);
                 }break;
-                case 136:{
-                    textMessage += "136";
+                case MessageCommand.S_C_ShowStatActivity:{
+                    textMessage += Integer.toString(MessageCommand.S_C_ShowStatActivity);
                 }break;
-                case 137:{
-                    textMessage += "137";
+                case MessageCommand.C_S_NeedRefreshStatistic:{
+                    textMessage += Integer.toString(MessageCommand.C_S_NeedRefreshStatistic);
                     textMessage += "" + message.getVariableOne();
                 }break;
-                case 138:{
+                case MessageCommand.C_S_MessageToLobbyFromlogin:{
                     //от клиента серверу - сообщение в лобби-чат
-                    textMessage += "138";
+                    textMessage += Integer.toString(MessageCommand.C_S_MessageToLobbyFromlogin);
                     textMessage += message.getLoginLength();
                     textMessage += message.getLogin();
                     textMessage += message.getMessage();
                 }break;
-                case 139:{
-                    textMessage += "139";
+                case MessageCommand.S_C_MessageToLobbyFromlogin:{
+                    textMessage += Integer.toString(MessageCommand.S_C_MessageToLobbyFromlogin);
                     textMessage += message.getLoginLength();
                     textMessage += message.getLogin();
                     textMessage += message.getMessage();
                 }break;
-                case 140:{
-                    textMessage += "140";
+                case MessageCommand.S_C_MessageToLobbyAboutCoonect:{
+                    textMessage += Integer.toString(MessageCommand.S_C_MessageToLobbyAboutCoonect);
                     textMessage += message.getMessage();
                 }break;
-                case 141:{
-                    textMessage += "141";
+                case MessageCommand.C_S_WantToObserverToGame:{
+                    textMessage += Integer.toString(MessageCommand.C_S_WantToObserverToGame);
                     textMessage += message.getGameID();
                 }break;
-                case 142:{
-                    textMessage += "142";
+                case MessageCommand.S_C_ShowObserverActivity:{
+                    textMessage += Integer.toString(MessageCommand.S_C_ShowObserverActivity);
                     textMessage += message.getGameInfo().toString();
                 }break;
-                case 143:{
-                    textMessage += "143";
+                case MessageCommand.S_C_LoginFireToCoordAndHit:{
+                    textMessage += Integer.toString(MessageCommand.S_C_LoginFireToCoordAndHit);
                     textMessage += message.getLoginLength();
                     textMessage += message.getLogin();
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 }break;
-                case 144:{
-                    textMessage += "144";
+                case MessageCommand.S_C_ToObs_LoginFireToCoordAndMiss:{
+                    textMessage += Integer.toString(MessageCommand.S_C_ToObs_LoginFireToCoordAndMiss);
                     textMessage += message.getLoginLength();
                     textMessage += message.getLogin();
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 }break;
-                case 145:{
-                    textMessage += "145";
+                case MessageCommand.S_C_ToObs_LoginDestroyShipByCoord:{
+                    textMessage += Integer.toString(MessageCommand.S_C_ToObs_LoginDestroyShipByCoord);
                     textMessage += message.getLoginLength();
                     textMessage += message.getLogin();
                     textMessage += "" + message.getCoordX();
                     textMessage += "" + message.getCoordY();
                 }break;
-                case 146:{
-                    textMessage += "146";
+                case MessageCommand.S_C_ToObs_LoginWin:{
+                    textMessage += Integer.toString(MessageCommand.S_C_ToObs_LoginWin);
                     textMessage += message.getLogin();
                 }break;
-                case 147:{
-                    textMessage += "147";
+                case MessageCommand.S_C_ToObs_ActualGameInfo:{
+                    textMessage += Integer.toString(MessageCommand.S_C_ToObs_ActualGameInfo);
                     textMessage += Decoder.boardWithShotsToString(message.getBoard());
                     textMessage += Decoder.boardWithShotsToString(message.getBoard2());
                 }break;
-                case 148:{
-                    textMessage += "148";
+                case MessageCommand.C_S_GamerWantToLose:{
+                    textMessage += Integer.toString(MessageCommand.C_S_GamerWantToLose);
                 }break;
-                case 149:{
-                    textMessage += "149";
+                case MessageCommand.C_S_WantStatAboutlogin:{
+                    textMessage += Integer.toString(MessageCommand.C_S_WantStatAboutlogin);
                     textMessage += message.getLoginLength();
                     textMessage += message.getLogin();
                 }break;
-                case 150:{
-                    textMessage += "150";
+                case MessageCommand.C_S_LeftFromTheGame:{
+                    textMessage += Integer.toString(MessageCommand.C_S_LeftFromTheGame);
                 }break;
-                case 151:{
-                    textMessage += "151";
+                case MessageCommand.S_C_HostLeftTheGame:{
+                    textMessage += Integer.toString(MessageCommand.S_C_HostLeftTheGame);
                 }break;
-                case 152:{
-                    textMessage += "152";
+                case MessageCommand.C_S_StopObserveTheGame:{
+                    textMessage += Integer.toString(MessageCommand.C_S_StopObserveTheGame);
                 }break;
-                case 201:{
+                case MessageCommand.S_C_ListOfLobbyGame:{
                     textMessage = toStringMessageWithGames(message);
                 }break;
-                case 202:{
+                case MessageCommand.S_C_Statistic:{
                     textMessage = toStringMessageOfStatistic(message);
                 }break;
-                case 203:{
-                    textMessage = "203";
+                case MessageCommand.C_S_DisconnectFromServer:{
+                    textMessage += Integer.toString(MessageCommand.C_S_DisconnectFromServer);
                 }break;
-                case 300:{
-                    textMessage += "300";
+                case MessageCommand.S_C_DisconnectFromServer:{
+                    textMessage += Integer.toString(MessageCommand.S_C_DisconnectFromServer);
                 }break;
-                case 301:{
-                    textMessage += "301";
+                case MessageCommand.S_C_SystemMessageStopTheThread:{
+                    textMessage += Integer.toString(MessageCommand.S_C_SystemMessageStopTheThread);
                 }break;
-                case 302:{
-                    textMessage += "302";
-                }break;
-                case 998:{
-                    textMessage += "998";
+                case MessageCommand.S_C_EmptyStat:{
+                    textMessage += Integer.toString(MessageCommand.S_C_EmptyStat);
                 }break;
                 default:{
-                    textMessage ="";
+                    textMessage += Integer.toString(MessageCommand.EmptyMessage);
                 }
             }
         }
@@ -601,7 +598,7 @@ public class Decoder {
     private String toStringMessageWithGames(Message message){
         if(!message.getListOfGame().isEmpty()) {
             String result = "";
-            result += 201;
+            result += MessageCommand.S_C_ListOfLobbyGame;
             ArrayList<String> list = message.getListOfGame();
             String plus = String.format("%04d", list.size());
             result += plus;
@@ -627,13 +624,13 @@ public class Decoder {
             countOfGames--;
         }
 
-        return new Message(201, resultArray);
+        return new Message(MessageCommand.S_C_ListOfLobbyGame, resultArray);
     }
 
     private String toStringMessageOfStatistic(Message message){
         if(!message.getStatisticList().isEmpty()){
             String result = "";
-            result += 202;
+            result += MessageCommand.S_C_Statistic;
             ArrayList<String> list = message.getStatisticList();
             String plus = String.format("%02d", list.size());
             result += plus;
@@ -659,6 +656,6 @@ public class Decoder {
             i+=length;
             countOfStatisticItem--;
         }
-        return new Message(202,resultArray);
+        return new Message(MessageCommand.S_C_Statistic,resultArray);
     }
 }

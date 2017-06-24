@@ -6,7 +6,7 @@ import android.app.Activity;
  * Created by Artem on 06.05.2017.
  */
 public interface IController {
-    void buttonConnectHandler(String IP);
+    void buttonConnectHandler(String IP, int port);
     void buttonRegistrationHandler();
     void buttonRegistrationNewAccount(String login, String pass);
     void buttonLoginHandler(String login, String pass);
@@ -40,4 +40,5 @@ public interface IController {
     void showStatiscticHandler();
     void refreshStatisticHandler(int offset);
     void resetBoard();
+    void closeApp();
 }

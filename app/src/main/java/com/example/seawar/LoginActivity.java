@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.*;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -129,6 +130,7 @@ public class LoginActivity extends AppCompatActivity implements IRefreshable{
     protected void onDestroy(){
         super.onDestroy();
         System.err.println("LoginActivity.onDestroy()--------------------------------disconnect!!!!!!!!!!!!!!!!!!!!!");
+        Log.i("Message","LoginActivity.onDestroy()");
         if (model.getConnectionState() != IModel.ConnectionState.offline && model.getConnectionState() != IModel.ConnectionState.cantConnectToServer)
             controller.disconnect();
     }

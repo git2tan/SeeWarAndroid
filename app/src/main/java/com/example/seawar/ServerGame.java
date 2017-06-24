@@ -18,7 +18,7 @@ public class ServerGame {
 
     @Override
     public String toString(){
-        String result = String.format("%d  %s  %s  %d", id, login, isFull?"full":"ready to game", observerCount);
+        String result = String.format(" %s  %s  %d", login, isFull?"full":"ready to game", observerCount);
         return result;
     }
 

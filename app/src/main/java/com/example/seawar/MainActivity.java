@@ -20,8 +20,10 @@ public class MainActivity extends AppCompatActivity implements IRefreshable {
     Button connectButton;
     Button setDefaultIPButton;
     EditText connectIPField;
+    EditText connectPortField;
     MyController controller;
     IModel model;
+    boolean isFirstClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +32,27 @@ public class MainActivity extends AppCompatActivity implements IRefreshable {
         controller = MyController.getInstance();
         model = MyModel.getInstance();
         controller.setCurrentActivity(this);
-
+        isFirstClick = true;
         connectStateLabel = (TextView) findViewById(R.id.connectStateLabel);
         connectButton = (Button) findViewById(R.id.connectButton);
         setDefaultIPButton = (Button) findViewById(R.id.setDefaultIPButton);
         connectIPField = (EditText) findViewById(R.id.connectIPField);
         connectIPField.setText(model.getDefaultIP());
 
+        connectPortField = (EditText) findViewById(R.id.portField);
+        connectPortField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isFirstClick)
+                    connectPortField.setText("");
+                isFirstClick = false;
+            }
+        });
+
         connectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                controller.buttonConnectHandler(String.valueOf(connectIPField.getText()));
+                controller.buttonConnectHandler(String.valueOf(connectIPField.getText()), Integer.parseInt(String.valueOf(connectPortField.getText())));
             }
         });
 
@@ -133,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements IRefreshable {
     protected void onDestroy(){
         super.onDestroy();
         System.err.println("MainActivity DESTROY!");
-        controller.disconnect();
+        controller.closeApp();
+        //controller.disconnect();
     }
 }

@@ -423,12 +423,14 @@ public class MyModel extends Observable implements IModel{
         game.setThisReady(false);
         game.setOpponentReady(false);
         isWinner = true;
+        game.setOpponent("");
         setChanged();
         notifyObservers();
     }
     public void setIsLoser(){
         game.setThisReady(false);
         game.setOpponentReady(false);
+        game.setOpponent("");
         isLoser = true;
         setChanged();
         notifyObservers();

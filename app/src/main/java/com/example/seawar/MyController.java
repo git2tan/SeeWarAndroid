@@ -56,7 +56,7 @@ public class MyController implements IController, Observer {
                             sender = new MySender(MyController.getInstance());
                             try {
                                 Socket clientSocket = new Socket();
-                                clientSocket.connect(new InetSocketAddress(IP, port), 500);
+                                clientSocket.connect(new InetSocketAddress(IP, port), 300);
                                 System.err.println("Client with name " + clientSocket.toString());
                                 ClientReceiver receiver = new ClientReceiver(MyController.getInstance(), clientSocket);
                                 sender.setSocket(clientSocket);
@@ -84,7 +84,7 @@ public class MyController implements IController, Observer {
     @Override
     public void buttonRegistrationHandler() {
         if (model.getConnectionState() == IModel.ConnectionState.online ||
-                model.getConnectionState() == IModel.ConnectionState.isAuthorizedOnTheServer)
+                model.getConnectionState() == IModel.ConnectionState.isAuthorizedOnTheServer || model.getConnectionState() == IModel.ConnectionState.cantLogin)
             model.setCurState(IModel.ModelState.registrationFrame);
         else{
             //???

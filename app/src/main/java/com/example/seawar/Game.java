@@ -139,7 +139,8 @@ public class Game implements IGame {
     }
 
     private void reduceOpponentShips(int size){
-        opponentShips[size - 1]--;
+        if (opponentShips[size - 1] > 0)
+            opponentShips[size - 1]--;
     }
 
     public void actualizeGameBoardsForObs(int [][] gameBoard1, int[][] gameBoard2){

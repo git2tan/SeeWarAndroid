@@ -13,48 +13,6 @@
         tools:layout_editor_absoluteX="8dp">
 
         <Button
-            android:id="@+id/sendMessageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="266dp"
-            android:layout_y="388dp"
-            android:text="send" />
-
-        <EditText
-            android:id="@+id/messageField"
-            android:layout_width="226dp"
-            android:layout_height="wrap_content"
-            android:layout_x="37dp"
-            android:layout_y="390dp"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-        <ListView
-            android:id="@+id/listOfGame"
-            android:layout_width="321dp"
-            android:layout_height="179dp"
-            android:layout_x="38dp"
-            android:layout_y="17dp"
-            android:choiceMode="singleChoice" />
-
-        <ScrollView
-            android:id="@+id/scrollView123"
-            android:layout_width="327dp"
-            android:layout_height="176dp"
-            android:layout_x="36dp"
-            android:layout_y="200dp">
-
-            <EditText
-                android:id="@+id/lobbyChat"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_x="38dp"
-                android:layout_y="210dp"
-                android:ems="10"
-                android:inputType="textMultiLine" />
-        </ScrollView>
-
-        <Button
             android:id="@+id/connectToGameButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,5 +35,47 @@
             android:layout_x="29dp"
             android:layout_y="446dp"
             android:text="observer" />
+
+        <ListView
+            android:id="@+id/listOfGame"
+            android:layout_width="321dp"
+            android:layout_height="179dp"
+            android:layout_x="19dp"
+            android:layout_y="18dp"
+            android:choiceMode="singleChoice" />
+
+        <ScrollView
+            android:id="@+id/scrollView123"
+            android:layout_width="320dp"
+            android:layout_height="176dp"
+            android:layout_x="21dp"
+            android:layout_y="201dp">
+
+            <EditText
+                android:id="@+id/lobbyChat"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_x="38dp"
+                android:layout_y="210dp"
+                android:ems="10"
+                android:inputType="textMultiLine" />
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/messageField"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:layout_x="22dp"
+            android:layout_y="390dp"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/sendMessageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="255dp"
+            android:layout_y="388dp"
+            android:text="send" />
     </AbsoluteLayout>
 </android.support.constraint.ConstraintLayout>

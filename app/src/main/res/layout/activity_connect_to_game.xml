@@ -126,57 +126,57 @@
             android:id="@+id/readyCheckBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="324dp"
-            android:layout_y="237dp" />
+            android:layout_x="316dp"
+            android:layout_y="233dp" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="323dp"
-            android:layout_y="214dp"
+            android:layout_x="315dp"
+            android:layout_y="210dp"
             android:text="Ready" />
-
-        <Button
-            android:id="@+id/turnButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="255dp"
-            android:layout_y="375dp"
-            android:text="turn" />
-
-        <Button
-            android:id="@+id/undoButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="38dp"
-            android:layout_y="374dp"
-            android:text="undo" />
 
         <Button
             android:id="@+id/resetButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="36dp"
-            android:layout_y="428dp"
+            android:layout_x="37dp"
+            android:layout_y="433dp"
             android:text="reset" />
+
+        <Button
+            android:id="@+id/undoButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="36dp"
+            android:layout_y="379dp"
+            android:text="undo" />
+
+        <AbsoluteLayout
+            android:id="@+id/board2connect"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_x="37dp"
+            android:layout_y="119dp">
+
+        </AbsoluteLayout>
 
         <ImageView
             android:id="@+id/shipOrientationImage2"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_x="133dp"
-            android:layout_y="377dp"
+            android:layout_y="380dp"
             app:srcCompat="@drawable/static_4" />
 
-        <AbsoluteLayout
-            android:id="@+id/board2connect"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_x="64dp"
-            android:layout_y="118dp">
-
-        </AbsoluteLayout>
+        <Button
+            android:id="@+id/turnButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="262dp"
+            android:layout_y="380dp"
+            android:text="turn" />
 
     </AbsoluteLayout>
 </android.support.constraint.ConstraintLayout>

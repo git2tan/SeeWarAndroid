@@ -54,7 +54,7 @@
         </AbsoluteLayout>
 
         <ImageView
-            android:id="@+id/ship1CountLabel3"
+            android:id="@+id/imageView32"
             android:layout_width="29dp"
             android:layout_height="45dp"
             android:layout_x="50dp"
